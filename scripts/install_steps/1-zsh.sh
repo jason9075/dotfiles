@@ -17,7 +17,7 @@ elif type pacman &> /dev/null; then
   yes | sudo pacman -S zsh
 fi
 
-read -p 'Change default login shell to Zsh? [Y/n]: ' answer
+read -p 'Change default login shell to Zsh? [y/N]: ' answer
 case $answer in
   [Yy]* ) chsh -s $(which zsh);;
   * ) ;;
