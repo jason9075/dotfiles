@@ -26,8 +26,12 @@ setup_zsh() {
 
 setup_neovim() {
   echo 'Setting up neovim...'
+  # install tree-sitter-cli for nvim plugin
+  npm install tree-sitter-cli
+
+  # install neovim
   NVIM_CONFIG_DIR="$HOME/.config/nvim"
-  mkdir -p NVIM_CONFIG_DIR
+  mkdir -p $NVIM_CONFIG_DIR
   ln -s $HOME/dotfiles/nvim $NVIM_CONFIG_DIR
   nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 
