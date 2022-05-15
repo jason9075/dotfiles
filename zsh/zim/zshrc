@@ -151,5 +151,7 @@ POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # alias
-#alias vim="nvim"
+alias vim="nvim"
 
+# env
+export PATH="${HOME}/.local/bin:$PATH"
