@@ -31,7 +31,7 @@ setup_neovim() {
 
   # install neovim
   NVIM_CONFIG_DIR="$HOME/.config/nvim"
-  mkdir -p $NVIM_CONFIG_DIR
+  mkdir -p "$HOME/.config"
   ln -s $HOME/dotfiles/nvim $NVIM_CONFIG_DIR
   nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 
