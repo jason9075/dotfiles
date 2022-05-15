@@ -24,7 +24,18 @@ setup_zsh() {
   echo 'zsh is ready!'
 }
 
+setup_neovim() {
+  echo 'Setting up neovim...'
+  NVIM_CONFIG_DIR="$HOME/.config/nvim"
+  mkdir -p NVIM_CONFIG_DIR
+  ln -s $HOME/dotfiles/nvim $NVIM_CONFIG_DIR
+  nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+
+  echo 'neovim is ready!'
+}
+
 install
 setup_zsh
+setup_neovim
 
 echo 'All done!'

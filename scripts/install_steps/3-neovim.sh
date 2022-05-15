@@ -6,8 +6,5 @@ if type nvim &> /dev/null; then
 fi
 
 bash $HOME/dotfiles/scripts/install_tools/neovim.sh
-mkdir -p $HOME/.config
-ln -s $HOME/dotfiles/nvim $HOME/.config/nvim
-nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 
-echo 'neovim is ready!'
+echo 'neovim is installed!'
