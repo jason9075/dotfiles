@@ -3,7 +3,7 @@
 set -e
 
 install_linux() {
-  mkdir -p "${HOME}/.local/bin
+  mkdir -p "~/.local/bin"
   curl -LO "https://github.com/neovim/neovim/releases/latest/download/nvim.appimage" -o "${HOME}/.local/bin/nvim"
   chmod u+x "${HOME}/.local/bin/nvim"
 }
