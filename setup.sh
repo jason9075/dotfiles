@@ -53,7 +53,7 @@ setup_git() {
 setup_conda() {
   echo 'Setting up miniconda...'
 
-  bash $HOME/dotfiles/scripts/install_steps/miniconda.sh
+  bash $HOME/dotfiles/scripts/install_tools/miniconda.sh
 
   echo 'miniconda is ready!'
 }
