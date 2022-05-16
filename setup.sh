@@ -37,6 +37,22 @@ setup_neovim() {
   echo 'neovim is ready!'
 }
 
+setup_kitty() {
+  echo 'Setting up kitty...'
+
+  ln -s $HOME/dotfiles/kitty/kitty.conf $HOME/.config/kitty/kitty.conf
+
+  if [ "$(uname)" = "Linux" ]; then
+    ln -s $HOME/.local/kitty.app/bin/kitty $HOME/.local/bin/
+  elif [ "$(uname)" = "Darwin" ]; then
+    ln -s /Applications/kitty.app $HOME/.local/bin/
+  else
+    echo 'kitty not support this platform.'
+  fi
+
+  echo 'kitty is ready!'
+}
+
 setup_git() {
   echo 'Setting up git...'
 
@@ -69,6 +85,7 @@ setup_dev_tools() {
 install
 setup_zsh
 setup_neovim
+setup_kitty
 setup_git
 setup_conda
 setup_dev_tools

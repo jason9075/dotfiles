@@ -3,7 +3,7 @@
 ## Linux Install
 
 ```
-sudo apt install git 
+sudo apt install git -y 
 git clone https://github.com/jason9075/dotfiles.git ~/dotfiles
 ~/dotfiles/setup.sh
 ```
