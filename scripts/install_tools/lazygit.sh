@@ -3,4 +3,4 @@ if type lazygit &> /dev/null; then
   exit 0
 fi
 
-go install github.com/jesseduffield/lazygit@latest
+"$HOME/.go/bin/go" install github.com/jesseduffield/lazygit@latest

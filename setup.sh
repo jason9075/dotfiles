@@ -50,9 +50,18 @@ setup_git() {
   echo 'git is ready!'
 }
 
+setup_dev_tools() {
+  echo 'Setting up dev tools...'
+
+  bash $HOME/dotfiles/scripts/install_tools/dev_tools.sh
+
+  echo 'dev tools is ready!'
+}
+
 install
 setup_zsh
 setup_neovim
 setup_git
+setup_dev_tools
 
 echo 'All done!'
