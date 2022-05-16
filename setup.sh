@@ -26,7 +26,13 @@ setup_zsh() {
 
 setup_neovim() {
   echo 'Installing nvim plugins'
-  zsh $HOME/dotfiles/scripts/install_tools/neovim-plugins.sh
+  bash $HOME/dotfiles/scripts/install_tools/neovim-plugins.sh
+
+  # setup config 
+  NVIM_CONFIG_DIR="$HOME/.config/nvim"
+  mkdir -p "$HOME/.config"
+  ln -s $HOME/dotfiles/nvim $NVIM_CONFIG_DIR
+  "$HOME/.local/bin/nvim" --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 
   echo 'neovim is ready!'
 }
