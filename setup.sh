@@ -50,6 +50,14 @@ setup_git() {
   echo 'git is ready!'
 }
 
+setup_conda() {
+  echo 'Setting up miniconda...'
+
+  bash $HOME/dotfiles/scripts/install_steps/miniconda.sh
+
+  echo 'miniconda is ready!'
+}
+
 setup_dev_tools() {
   echo 'Setting up dev tools...'
 
@@ -62,6 +70,7 @@ install
 setup_zsh
 setup_neovim
 setup_git
+setup_conda
 setup_dev_tools
 
 echo 'All done!'
