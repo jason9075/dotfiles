@@ -10,9 +10,9 @@ if ! type node &> /dev/null; then
   if type pkg &> /dev/null; then
     pkg install -y nodejs npm
   elif type apt-get &> /dev/null; then
-    sudo apt install -y nodejs 
+    sudo apt install -y nodejs npm
   elif type brew &> /dev/null; then
-    brew install node 
+    brew install node  
   elif type pacman &> /dev/null; then
     yes | sudo pacman -S nodejs npm 
   fi

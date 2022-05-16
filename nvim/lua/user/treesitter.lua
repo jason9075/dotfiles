@@ -5,11 +5,14 @@ end
 
 configs.setup {
     -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-    ensure_installed = { "css", "scss", "regex", "go", "swift", "rst", "typescript",
-        "json", "solidity", "scala", "lua", "http", "hjson", "toml", "cuda", "comment",
-        "vim", "godot_resource", "jsdoc", "dockerfile", "turtle", "jsonc", "query",
-        "yaml", "python", "r", "cpp", "gomod", "bash", "cmake", "html", "tsx", "help",
-        "json5", "fish", "latex", "java", "make", "llvm", "kotlin", "markdown" },
+    ensure_installed = { "css", "scss", "regex", "go", "rst", "typescript",
+        "json", "solidity", "scala", "lua", "http", "toml", "comment",
+        "vim", "godot_resource", "jsdoc", "dockerfile", "turtle", "jsonc", 
+        "yaml", "python", "r", "cpp", "gomod", "bash", "cmake", "html", "help",
+        "java", "make", "kotlin", "markdown"
+    -- seldom use
+    --	"scala", "hjson", "cuda", "tsx", "query", "json5", "fish", "latex", "llvm", "swift"
+    },
     sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
     ignore_install = { "" }, -- List of parsers to ignore installing
     autopairs = {
