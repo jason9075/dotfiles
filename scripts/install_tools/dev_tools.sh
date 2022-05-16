@@ -1,3 +1,5 @@
+#!/bin/bash
+
 if type apt-get &> /dev/null; then
   sudo apt install -y htop 
   sudo apt install -y ripgrep 
@@ -10,3 +12,5 @@ elif type brew &> /dev/null; then
   brew install tig
   brew install tmux
   brew install fzf
+fi
+
