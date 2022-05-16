@@ -156,3 +156,7 @@ alias vim="nvim"
 # env
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/node_modules/.bin:$PATH"
+export GOROOT="$HOME/.go"
+export PATH=$GOROOT/bin:$PATH
+export GOPATH="$HOME/go"
+export PATH=$GOPATH/bin:$PATH

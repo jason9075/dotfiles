@@ -1,7 +1,7 @@
 #!/bin/bash
 
 GIT_NAME=${GIT_NAME:-"jason9075"}
-GIT_MAIL=${GIT_MAIL:-"jason9075@gmail.com"}
+GIT_MAIL=${GIT_MAIL:-"jason9075@users.noreply.github.com"}
 
 install() {
     for INSTALL_SCRIPT in ~/dotfiles/scripts/install_steps/*.sh; do
@@ -37,8 +37,22 @@ setup_neovim() {
   echo 'neovim is ready!'
 }
 
+setup_git() {
+  echo 'Setting up git...'
+
+  git config --global user.name ${GIT_NAME}
+  git config --global user.email ${GIT_MAIL}
+  git config --global core.editor nvim
+  git config --global init.defaultBranch master
+
+  bash $HOME/dotfiles/scripts/install_tools/lazygit.sh
+
+  echo 'git is ready!'
+}
+
 install
 setup_zsh
 setup_neovim
+setup_git
 
 echo 'All done!'
