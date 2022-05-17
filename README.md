@@ -19,3 +19,11 @@ If you need to set user password, use:
 ```
 sudo passwd <username>
 ```
+
+## Ref
+
+```
+https://github.com/jonz94/dotfiles
+
+https://github.com/LunarVim/Neovim-from-scratch
+```
