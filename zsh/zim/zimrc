@@ -18,6 +18,9 @@ zmodule zsh-users/zsh-syntax-highlighting
 zmodule zsh-users/zsh-history-substring-search
 # }}} End configuration added by Zim install
 
+# add zsh-vi-mode
+zmodule jeffreytse/zsh-vi-mode 
+
 # use powerlevel10k as prompt
 if [ $(uname -r | grep -v -i ish) ]; then
   zmodule romkatv/powerlevel10k --use degit

@@ -145,7 +145,7 @@ bindkey -M vicmd 'j' history-substring-search-down
 # }}} End configuration added by Zim install
 
 # key to accept zsh autosuggest
-bindkey '^j' autosuggest-accept
+bindkey '^l' autosuggest-accept
 
 # ZSH vi mode escape
 export ZVM_VI_INSERT_ESCAPE_BINDKEY=kj
