@@ -1,17 +1,8 @@
 
 # fzf
 if ! type fzf &> /dev/null; then
-  if type pkg &> /dev/null; then
-    pkg install -y fzf
-  elif type apt-get &> /dev/null; then
-    sudo apt install -y fzf
-  elif type brew &> /dev/null; then
-    brew install fzf 
-  elif type apk &> /dev/null; then
-    apk add fzf
-  elif type pacman &> /dev/null; then
-    yes | sudo pacman -S fzf
-  fi
+  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+  ~/.fzf/install --key-bindings --completion --no-bash --no-zsh --no-fish
 fi
 
 # fdfind

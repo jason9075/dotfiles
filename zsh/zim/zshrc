@@ -144,6 +144,9 @@ bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 # }}} End configuration added by Zim install
 
+# ZSH vi mode escape
+export ZVM_VI_INSERT_ESCAPE_BINDKEY=kj
+
 # Disable POWERLEVEL10K Wizard
 POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
 
@@ -153,8 +156,7 @@ POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
 # FZF fuzzy search
 # If you install fzf from manager(ex: apt install) check below link to enable key-bindings
 # https://github.com/junegunn/fzf/issues/1866 
-source /usr/share/doc/fzf/examples/completion.zsh
-source /usr/share/doc/fzf/examples/key-bindings.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export FZF_DEFAULT_COMMAND='fd --type f --color=never --hidden'
 export FZF_DEFAULT_OPTS='--no-height --color=bg+:#343d46,gutter:-1,pointer:#ff3c3c,info:#0dbc79,hl:#0dbc79,hl+:#23d18b'
@@ -166,6 +168,7 @@ export FZF_ALT_C_COMMAND='fd --type d . --color=never --hidden'
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -50'"
 
 # alias
+alias git='LANG=en_GB git'
 alias ssh="kitty +kitten ssh"
 alias icat="kitty +kitten icat"
 alias vim="nvim"
