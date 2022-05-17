@@ -74,6 +74,14 @@ setup_conda() {
   echo 'miniconda is ready!'
 }
 
+setup_fuzzy_search() {
+  echo 'Setting up fuzzy search...'
+
+  bash $HOME/dotfiles/scripts/install_tools/fuzzy_search.sh
+
+  echo 'fuzzy search is ready!'
+}
+
 setup_dev_tools() {
   echo 'Setting up dev tools...'
 
@@ -88,6 +96,7 @@ setup_neovim
 setup_kitty
 setup_git
 setup_conda
+setup_fuzzy_search
 setup_dev_tools
 
 echo 'All done!'
