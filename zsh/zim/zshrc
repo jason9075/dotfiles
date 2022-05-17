@@ -156,7 +156,20 @@ POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
 # FZF fuzzy search
 # If you install fzf from manager(ex: apt install) check below link to enable key-bindings
 # https://github.com/junegunn/fzf/issues/1866 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Setup fzf
+# ---------
+if [[ ! "$PATH" == *~/.fzf/bin* ]]; then
+  export PATH="${PATH:+${PATH}:}~/.fzf/bin"
+fi
+
+# Auto-completion
+# ---------------
+[[ $- == *i* ]] && source "~/.fzf/shell/completion.zsh" 2> /dev/null
+
+# Key bindings
+# ------------
+source "~/.fzf/shell/key-bindings.zsh"
 
 export FZF_DEFAULT_COMMAND='fd --type f --color=never --hidden'
 export FZF_DEFAULT_OPTS='--no-height --color=bg+:#343d46,gutter:-1,pointer:#ff3c3c,info:#0dbc79,hl:#0dbc79,hl+:#23d18b'
