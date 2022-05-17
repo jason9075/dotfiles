@@ -47,7 +47,7 @@ return packer.startup(function(use)
         run = function() vim.fn['mkdp#util#install']() end,
         ft = { 'markdown' }
     }
-    use "joshdick/onedark.vim" -- color scheme
+    use "EdenEast/nightfox.nvim" -- color scheme
     use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
     use "numToStr/Comment.nvim" -- Easily comment stuff
     use 'kyazdani42/nvim-web-devicons'
