@@ -22,5 +22,3 @@ case $answer in
   [Yy]* ) chsh -s $(which zsh);;
   * ) ;;
 esac
-
-echo 'zsh is ready!'
