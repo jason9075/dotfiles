@@ -19,5 +19,5 @@ if ! fc-list | grep "Hack Regular Nerd Font" &> /dev/null; then
   git sparse-checkout add patched-fonts/Hack
   ./install.sh Hack
   cd ~/
-  rm -r ~/nerd-fonts
+  rm -rf ~/nerd-fonts
 fi
