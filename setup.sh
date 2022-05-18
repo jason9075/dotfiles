@@ -62,6 +62,7 @@ setup_git() {
   git config --global init.defaultBranch master
 
   bash $HOME/dotfiles/scripts/install_tools/lazygit.sh
+  ln -s $HOME/dotfiles/lazygit/config.yml $HOME/.config/lazygit/config.yml
 
   echo 'git is ready!'
 }
