@@ -83,7 +83,7 @@ local mappings = {
     ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer (NvimTree)" },
     ["w"] = { "<cmd>w!<CR>", "Save" },
     ["W"] = { "<cmd>wq!<CR>", "Save & Quit" },
-    ["q"] = { "<cmd>q!<CR>", "Quit" },
+    ["q"] = { "<cmd>q<CR>", "Quit" },
     ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
     ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
     ["t"] = { "<cmd>TroubleToggle<cr>", "Trouble" },
@@ -173,6 +173,20 @@ local mappings = {
         u = { "<cmd>lua require'dapui'.toggle()<cr>", "UI" },
         x = { "<cmd>lua require'dap'.terminate()<cr>", "Exit" },
     },
+
+    n = {
+        name = "nvimTree Actions",
+        a = { "<cmd>lua require'nvim-tree.actions'.on_keypress('create')<cr>", "Create" },
+        R = { "<cmd>lua require'nvim-tree.actions'.on_keypress('refresh')<cr>", "Refresh" },
+        r = { "<cmd>lua require'nvim-tree.actions'.on_keypress('rename')<cr>", "Rename" },
+        d = { "<cmd>lua require'nvim-tree.actions'.on_keypress('remove')<cr>", "Remove" },
+        c = { "<cmd>lua require'nvim-tree.actions'.on_keypress('copy')<cr>", "Copy File" },
+        p = { "<cmd>lua require'nvim-tree.actions'.on_keypress('paste')<cr>", "Paste File" },
+        x = { "<cmd>lua require'nvim-tree.actions'.on_keypress('cut')<cr>", "Cut File" },
+        y = { "<cmd>lua require'nvim-tree.actions'.on_keypress('copy_name')<cr>", "Copy Name" },
+        Y = { "<cmd>lua require'nvim-tree.actions'.on_keypress('copy_path')<cr>", "Copy Path" },
+        h = { "<cmd>lua require'nvim-tree.actions'.on_keypress('toggle_help')<cr>", "Help" },
+    }
 }
 
 local vopts = {
