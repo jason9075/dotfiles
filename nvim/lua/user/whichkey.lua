@@ -186,6 +186,7 @@ local mappings = {
         y = { "<cmd>lua require'nvim-tree.actions'.on_keypress('copy_name')<cr>", "Copy Name" },
         Y = { "<cmd>lua require'nvim-tree.actions'.on_keypress('copy_path')<cr>", "Copy Path" },
         h = { "<cmd>lua require'nvim-tree.actions'.on_keypress('toggle_help')<cr>", "Help" },
+        I = { "<cmd>lua require'nvim-tree.actions'.on_keypress('toggle_git_ignored')<cr>", "Show/Hide Ignore Files" },
     }
 }
 
