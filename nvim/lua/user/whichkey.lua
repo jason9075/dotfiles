@@ -84,6 +84,7 @@ local mappings = {
     ["w"] = { "<cmd>w!<CR>", "Save" },
     ["W"] = { "<cmd>wq!<CR>", "Save & Quit" },
     ["q"] = { "<cmd>q<CR>", "Quit" },
+    ["Q"] = { "<cmd>q!<CR>", "Quit!" },
     ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
     ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
     ["t"] = { "<cmd>TroubleToggle<cr>", "Trouble" },
