@@ -121,7 +121,10 @@ export FZF_ALT_C_COMMAND='fd --type d . --color=never --hidden'
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -50'"
 
 # alias
-alias ls='ls -p --group-directories-first --color=auto'
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  alias ls='ls --group-directories-first'
+fi
+alias ls='ls -p --color=auto'
 alias ll='ls -l'
 alias git='LANG=en_GB git'
 alias ssh='kitty +kitten ssh'
