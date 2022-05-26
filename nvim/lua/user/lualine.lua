@@ -16,6 +16,7 @@ local icons = require "user.icons"
 
 local colors = {
   green    = '#98be65',
+  yellow   = '#ECBE7B',
   orange   = '#FF8800',
   red      = '#ec5f67',
 }
@@ -25,27 +26,23 @@ local diagnostics = {
   sources = { "nvim_diagnostic" },
   sections = { "error", "warn" },
   symbols = { error = icons.diagnostics.Error .. " ", warn = icons.diagnostics.Warning .. " " },
-  colored = false,
-  update_in_insert = false,
+  diagnostics_color = {
+    color_error = { fg = colors.red },
+    color_warn = { fg = colors.yellow },
+  },
+  date_in_insert = false,
   always_visible = true,
 }
 
 local diff = {
   "diff",
-  symbols = { added = icons.git.Add, modified = icons.git.Mod, removed = icons.git.Remove }, -- changes diff symbols
+  symbols = { added = icons.git.Add .. " ", modified = icons.git.Mod .. " ", removed = icons.git.Remove .. " "},
   diff_color = {
     added = { fg = colors.green },
     modified = { fg = colors.orange },
     removed = { fg = colors.red },
   },
   cond = hide_in_width,
-}
-
-local mode = {
-    "mode",
-    fmt = function(str)
-        return " " .. str 
-    end,
 }
 
 local filetype = {
@@ -84,7 +81,7 @@ local progress = function()
     local current_line = vim.fn.line(".")
     local total_lines = vim.fn.line("$")
     local line_ratio = current_line / total_lines
-    return string.format("L:%d  %.1f", total_lines, line_ratio * 100) .. "%%"
+    return string.format("%.1f", line_ratio * 100) .. "%%"
 end
 
 local nvim_gps = function()
@@ -106,14 +103,14 @@ lualine.setup({
         always_divide_middle = true,
     },
     sections = process_sections {
-        lualine_a = { mode },
-        lualine_b = { branch, diagnostics },
+        lualine_a = { "mode" },
+        lualine_b = { branch, diff },
         lualine_c = {
             { nvim_gps, cond = hide_in_width },
         },
-        lualine_x = { "encoding", diff, filetype },
-        lualine_y = { location },
-        lualine_z = { progress },
+        lualine_x = { "encoding", filetype },
+        lualine_y = { diagnostics },
+        lualine_z = { location, progress },
     },
     inactive_sections = {
         lualine_a = {},
