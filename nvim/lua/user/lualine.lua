@@ -31,7 +31,7 @@ local diagnostics = {
     color_warn = { fg = colors.yellow },
   },
   date_in_insert = false,
-  always_visible = true,
+  always_visible = false,
 }
 
 local diff = {
@@ -108,8 +108,8 @@ lualine.setup({
         lualine_c = {
             { nvim_gps, cond = hide_in_width },
         },
-        lualine_x = { "encoding", filetype },
-        lualine_y = { diagnostics },
+        lualine_x = { diagnostics },
+        lualine_y = { "encoding", filetype },
         lualine_z = { location, progress },
     },
     inactive_sections = {
