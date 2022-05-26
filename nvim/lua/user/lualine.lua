@@ -14,6 +14,12 @@ end
 
 local icons = require "user.icons"
 
+local colors = {
+  green    = '#98be65',
+  orange   = '#FF8800',
+  red      = '#ec5f67',
+}
+
 local diagnostics = {
   "diagnostics",
   sources = { "nvim_diagnostic" },
@@ -26,15 +32,19 @@ local diagnostics = {
 
 local diff = {
   "diff",
-  colored = false,
-  symbols = { added = icons.git.Add .. " ", modified = icons.git.Mod .. " ", removed = icons.git.Remove .. " " }, -- changes diff symbols
+  symbols = { added = icons.git.Add, modified = icons.git.Mod, removed = icons.git.Remove }, -- changes diff symbols
+  diff_color = {
+    added = { fg = colors.green },
+    modified = { fg = colors.orange },
+    removed = { fg = colors.red },
+  },
   cond = hide_in_width,
 }
 
 local mode = {
     "mode",
     fmt = function(str)
-        return "-- " .. str .. " --"
+        return " " .. str 
     end,
 }
 
@@ -47,7 +57,7 @@ local filetype = {
 local branch = {
     "branch",
     icons_enabled = true,
-    icon = "",
+    icon = icons.git.branch,
 }
 
 local location = {
@@ -55,16 +65,26 @@ local location = {
     padding = 0,
 }
 
--- cool function for progress
+-- Put proper separators and gaps between components in sections
+local function process_sections(sections)
+  for name, section in pairs(sections) do
+    local left = name:sub(9, 10) < 'x'
+    for id, comp in ipairs(section) do
+      if type(comp) ~= 'table' then
+        comp = { comp }
+        section[id] = comp
+      end
+      comp.separator = left and { right = '' } or { left = '' }
+    end
+  end
+  return sections
+end
+
 local progress = function()
     local current_line = vim.fn.line(".")
     local total_lines = vim.fn.line("$")
     local line_ratio = current_line / total_lines
     return string.format("L:%d  %.1f", total_lines, line_ratio * 100) .. "%%"
-end
-
-local spaces = function()
-    return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
 end
 
 local nvim_gps = function()
@@ -85,14 +105,13 @@ lualine.setup({
         disabled_filetypes = { "dashboard", "NvimTree", "Outline" },
         always_divide_middle = true,
     },
-    sections = {
-        lualine_a = { branch, diagnostics },
-        lualine_b = { mode },
+    sections = process_sections {
+        lualine_a = { mode },
+        lualine_b = { branch, diagnostics },
         lualine_c = {
             { nvim_gps, cond = hide_in_width },
         },
-        -- lualine_x = { "encoding", "fileformat", "filetype" },
-        lualine_x = { diff, spaces, "encoding", filetype },
+        lualine_x = { "encoding", diff, filetype },
         lualine_y = { location },
         lualine_z = { progress },
     },
