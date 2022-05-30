@@ -11,6 +11,7 @@ if ! type fuse &> /dev/null; then
     pkg install -y fuse
   elif type apt-get &> /dev/null; then
     sudo apt install -y fuse
+    sudo apt install -y xclip
   elif type apk &> /dev/null; then
     apk add fuse
   elif type pacman &> /dev/null; then
