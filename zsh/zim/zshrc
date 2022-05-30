@@ -138,7 +138,9 @@ alias cfv='vim ~/.config/nvim/init.lua'
 alias cfk='vim ~/.config/kitty/kitty.conf'
 
 # tmux
-alias tn='tmux new -s'
+alias tn='tmux new -s' # Start a new session and give a name
+alias ta='tmux a' # Attach to last session
+alias tkill="for s in \$(tmux list-sessions | awk '{print \$1}' | rg ':' -r '' | fzf); do tmux kill-session -t \$s; done;" # Kill session by fzf
 
 # GOLANG
 export GOROOT="$HOME/.go"
