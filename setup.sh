@@ -56,7 +56,7 @@ setup_kitty() {
 setup_tmux(){
   echo 'Setting up tmux...'
 
-  ln -s $HOME/dotfiles/tmux/tmux.conf $HOME/tmux.conf
+  ln -s $HOME/dotfiles/tmux/tmux.conf $HOME/.tmux.conf
   ~/.tmux/plugins/tpm/bin/install_plugins
 
   echo 'tmux is ready!'
