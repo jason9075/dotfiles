@@ -137,6 +137,9 @@ alias cfz='vim ~/.zshrc && source ~/.zshrc'
 alias cfv='vim ~/.config/nvim/init.lua'
 alias cfk='vim ~/.config/kitty/kitty.conf'
 
+# tmux
+alias tn='tmux new -s'
+
 # GOLANG
 export GOROOT="$HOME/.go"
 export GOPATH="$HOME/go"

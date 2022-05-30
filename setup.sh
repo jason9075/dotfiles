@@ -53,6 +53,14 @@ setup_kitty() {
   echo 'kitty is ready!'
 }
 
+setup_tmux(){
+  echo 'Setting up tmux...'
+
+  ln -s $HOME/dotfiles/tmux/tmux.conf $HOME/tmux.conf
+
+  echo 'tmux is ready!'
+}
+
 setup_git() {
   echo 'Setting up git...'
 
@@ -95,6 +103,7 @@ install
 setup_zsh
 setup_neovim
 setup_kitty
+setup_tmux
 setup_git
 setup_conda
 setup_fuzzy_search
