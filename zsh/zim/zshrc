@@ -124,8 +124,9 @@ export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -50'"
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   alias ls='ls --group-directories-first'
 fi
+alias shutdown='sudo shutdown now'
 alias ls='ls -p --color=auto'
-alias ll='ls -l'
+alias ll='ls -al -h'
 alias git='LANG=en_GB git'
 alias ssh='kitty +kitten ssh'
 alias icat='kitty +kitten icat'

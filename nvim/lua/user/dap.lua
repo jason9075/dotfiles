@@ -59,7 +59,7 @@ end
 -- download: https://github.com/vadimcn/vscode-lldb/releases
 -- unzip
 -- unzip codelldb-x86_64-linux.vsix -d ~/codelldb/
-local cmd = '~/codelldb/extension/adapter/codelldb'
+local cmd = '/home/jason9075/codelldb/extension/adapter/codelldb'
 
 dap.adapters.codelldb = function(on_adapter)
   -- This asks the system for a free port
