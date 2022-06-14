@@ -39,3 +39,15 @@ if ! type unzip &> /dev/null; then
   fi
 fi
 
+# bottom
+if ! type btm &> /dev/null; then
+  elif type apt-get &> /dev/null; then
+    curl -LO https://github.com/ClementTsang/bottom/releases/download/0.6.8/bottom_0.6.8_amd64.deb
+    sudo dpkg -i bottom_0.6.8_amd64.deb
+    rm bottom_0.6.8_amd64.deb
+  elif type brew &> /dev/null; then
+    brew install bottom
+  elif type pacman &> /dev/null; then
+    yes | sudo pacman -Syu bottom
+  fi
+fi
