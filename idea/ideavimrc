@@ -1,0 +1,33 @@
+"" Basic:
+let mapleader = " "
+imap kj <Esc>
+
+set clipboard+=unnamed
+
+"" find
+map <leader>fd <Action>(GotoSuperMethod)
+map <leader>fg <Action>(FindInPath)
+map <leader>ff <Action>(GotoFile)
+map <leader>fu <Action>(FindUsages) 
+map <leader>fa <Action>(GotoAction)
+
+"" refactor:
+map <leader>rr <Action>(RenameElement)
+map <leader>rf <Action>(ReformatCode)
+map <leader>ev <Action>(IntroduceVariable)
+map <leader>ef <Action>(ExtractFunction)
+map <leader>ea <Action>(IntroduceParameter)
+map <leader>ep <Action>(IntroduceProperty)
+
+"" move:
+map mk @=<Action>(MoveStatementUp)<CR>
+map mj @=<Action>(MoveStatementDown)<CR>
+
+map <leader>dc <Action>(Debug)
+map <leader>db <Action>(ToggleLineBreakpoint)
+map <leader>dr <Action>(Run)
+map <leader>dx <Action>(Stop)
+
+"" replace ideavim's emulated <C-o> and <C-i> with IDE's to have correct history
+map <C-o> <Action>(Back)
+map <C-i> <Action>(Forward)

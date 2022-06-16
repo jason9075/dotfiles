@@ -37,6 +37,14 @@ setup_neovim() {
   echo 'neovim is ready!'
 }
 
+setup_idea(){
+  echo 'setup ideavimrc'
+
+  ln -s $HOME/dotfiles/idea/ideavimrc $HOME/.ideavimrc
+
+  echo 'ideavimrc is ready!'
+}
+
 setup_kitty() {
   echo 'Setting up kitty...'
 
