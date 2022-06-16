@@ -3,12 +3,16 @@ let mapleader = " "
 imap kj <Esc>
 
 set clipboard+=unnamed
+set relativenumber
+set number
+set hlsearch
+set incsearch
 
 "" find
 map <leader>fd <Action>(GotoSuperMethod)
 map <leader>fg <Action>(FindInPath)
-map <leader>ff <Action>(GotoFile)
 map <leader>fu <Action>(FindUsages) 
+map <leader>ff <Action>(GotoFile)
 map <leader>fa <Action>(GotoAction)
 
 "" refactor:
@@ -19,9 +23,13 @@ map <leader>ef <Action>(ExtractFunction)
 map <leader>ea <Action>(IntroduceParameter)
 map <leader>ep <Action>(IntroduceProperty)
 
+"" comment:
+map <leader>/ <Action>(CommentByLineComment)
+vmap <leader>/ <Action>(CommentByLineComment)<Esc>
+
 "" move:
-map mk @=<Action>(MoveStatementUp)<CR>
-map mj @=<Action>(MoveStatementDown)<CR>
+map mk @=<Action>(MoveStatementUp)
+map mj @=<Action>(MoveStatementDown)
 
 map <leader>dc <Action>(Debug)
 map <leader>db <Action>(ToggleLineBreakpoint)
