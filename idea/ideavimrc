@@ -25,7 +25,7 @@ map <leader>fa <Action>(GotoAction)
 map <leader>rr <Action>(RenameElement)
 map <leader>rf <Action>(ReformatCode)
 map <leader>rv <Action>(IntroduceVariable)
-map <leader>rf <Action>(ExtractFunction)
+map <leader>rm <Action>(ExtractFunction)
 map <leader>ra <Action>(IntroduceParameter)
 map <leader>rp <Action>(IntroduceProperty)
 
