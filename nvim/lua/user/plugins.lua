@@ -59,6 +59,10 @@ return packer.startup(function(use)
     use "akinsho/bufferline.nvim"
     use "moll/vim-bbye" -- close buffer command when you use bufferline
     use "nvim-lualine/lualine.nvim"
+    use {
+      'phaazon/hop.nvim',
+      branch = 'v1', -- optional but strongly recommended
+    }
 
     -- cmp plugins
     use "hrsh7th/nvim-cmp" -- The completion plugin

@@ -88,7 +88,7 @@ local mappings = {
     ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
     ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
     ["t"] = { "<cmd>TroubleToggle<cr>", "Trouble" },
-    ["m"] = { ":MarkdownPreviewToggle<cr>", "Markdown Preview" },
+    ["m"] = { "<cmd>MarkdownPreviewToggle<cr>", "Markdown Preview" },
 
     p = {
         name = "Packer",

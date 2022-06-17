@@ -25,8 +25,6 @@ keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
---keymap("n", "<leader>e", ":Lex 30<cr>", opts)
-
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize +2<CR>", opts)
 keymap("n", "<C-Down>", ":resize -2<CR>", opts)
@@ -38,8 +36,9 @@ keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
 -- Insert --
--- Press jk fast to enter
+-- Press jk fast to exit
 keymap("i", "kj", "<ESC>", opts)
+keymap("v", "kj", "<ESC>", opts)
 
 -- Visual --
 -- Stay in indent mode
@@ -66,10 +65,10 @@ keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
 -- Markdown Preview
-keymap("n", "<leader>m", ":MarkdownPreviewToggle<cr>", opts)
+keymap("n", "<leader>m", "<cmd>MarkdownPreviewToggle<cr>", opts)
 
 -- Nvimtree
-keymap("n", "<F3>", ":NvimTreeToggle<cr>", opts)
+keymap("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", opts)
 
 -- LSP
 keymap("n", "<leader>rf", "<cmd>Format<cr>", opts)
@@ -112,3 +111,15 @@ keymap("n", "<leader>ri", [[<Cmd>lua require('refactoring').refactor('Inline Var
 
 -- Copilot
 keymap("i", "<C-l>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
+
+-- Hop
+keymap('n', '<leader><leader>f', "<cmd>HopChar2AC<cr>", opts)
+keymap('n', '<leader><leader>F', "<cmd>HopChar2BC<cr>", opts)
+keymap('n', '<leader><leader>w', "<cmd>HopWordAC<cr>",  opts)
+keymap('n', '<leader><leader>b', "<cmd>HopWordBC<cr>",  opts)
+keymap('n', '<leader><leader>s', "<cmd>HopPattern<cr>", opts)
+keymap('v', '<leader><leader>f', "<cmd>HopChar2AC<cr>", opts)
+keymap('v', '<leader><leader>F', "<cmd>HopChar2BC<cr>", opts)
+keymap('v', '<leader><leader>w', "<cmd>HopWordAC<cr>",  opts)
+keymap('v', '<leader><leader>b', "<cmd>HopWordBC<cr>",  opts)
+keymap('v', '<leader><leader>s', "<cmd>HopPattern<cr>", opts)

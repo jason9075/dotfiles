@@ -1,12 +1,19 @@
 "" Basic:
 let mapleader = " "
 imap kj <Esc>
+vmap kj <Esc>
 
 set clipboard+=unnamed
 set relativenumber
 set number
 set hlsearch
 set incsearch
+set NERDTree
+set easymotion
+
+"" show
+map <leader>sl <Action>(ShowIntentionActions)
+map <leader>e <Action>(SelectInProjectView) 
 
 "" find
 map <leader>fd <Action>(GotoSuperMethod)
@@ -18,10 +25,10 @@ map <leader>fa <Action>(GotoAction)
 "" refactor:
 map <leader>rr <Action>(RenameElement)
 map <leader>rf <Action>(ReformatCode)
-map <leader>ev <Action>(IntroduceVariable)
-map <leader>ef <Action>(ExtractFunction)
-map <leader>ea <Action>(IntroduceParameter)
-map <leader>ep <Action>(IntroduceProperty)
+map <leader>rv <Action>(IntroduceVariable)
+map <leader>rf <Action>(ExtractFunction)
+map <leader>ra <Action>(IntroduceParameter)
+map <leader>rp <Action>(IntroduceProperty)
 
 "" comment:
 map <leader>/ <Action>(CommentByLineComment)
@@ -31,6 +38,7 @@ vmap <leader>/ <Action>(CommentByLineComment)<Esc>
 map mk @=<Action>(MoveStatementUp)
 map mj @=<Action>(MoveStatementDown)
 
+"" debug:
 map <leader>dc <Action>(Debug)
 map <leader>db <Action>(ToggleLineBreakpoint)
 map <leader>dr <Action>(Run)
