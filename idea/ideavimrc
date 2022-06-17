@@ -1,7 +1,6 @@
 "" Basic:
 let mapleader = " "
 imap kj <Esc>
-vmap kj <Esc>
 
 set clipboard+=unnamed
 set relativenumber
@@ -16,7 +15,7 @@ map <leader>sl <Action>(ShowIntentionActions)
 map <leader>e <Action>(SelectInProjectView) 
 
 "" find
-map <leader>fd <Action>(GotoSuperMethod)
+map <leader>fd <Action>(GotoImplementation)
 map <leader>fg <Action>(FindInPath)
 map <leader>fu <Action>(FindUsages) 
 map <leader>ff <Action>(GotoFile)

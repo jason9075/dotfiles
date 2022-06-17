@@ -38,7 +38,6 @@ keymap("n", "<S-h>", ":bprevious<CR>", opts)
 -- Insert --
 -- Press jk fast to exit
 keymap("i", "kj", "<ESC>", opts)
-keymap("v", "kj", "<ESC>", opts)
 
 -- Visual --
 -- Stay in indent mode
