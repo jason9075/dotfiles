@@ -87,6 +87,13 @@ bindkey '^l' autosuggest-accept
 # ZSH vi mode escape
 export ZVM_VI_INSERT_ESCAPE_BINDKEY=kj
 
+# add clipboard in zsh-vi-mode
+zvm_vi_yank () {
+	zvm_yank
+	printf %s "${CUTBUFFER}" | xclip -sel c
+	zvm_exit_visual_mode
+}
+
 # Disable POWERLEVEL10K Wizard
 POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
 
