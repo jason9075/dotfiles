@@ -161,8 +161,3 @@ export PATH="$HOME/miniconda3/bin:$PATH"
 export PATH="$GOROOT/bin:$PATH"
 export PATH="$GOPATH/bin:$PATH"
 
-# GoLang
-export "GOROOT=/Users/astra-jason-kuan/.go"
-export "PATH=$GOROOT/bin:$PATH"
-export "GOPATH=/Users/astra-jason-kuan/go"
-export "PATH=$GOPATH/bin:$PATH"
