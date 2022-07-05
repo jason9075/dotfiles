@@ -59,6 +59,7 @@ return packer.startup(function(use)
     use "akinsho/bufferline.nvim"
     use "moll/vim-bbye" -- close buffer command when you use bufferline
     use "nvim-lualine/lualine.nvim"
+    use "wsdjeg/vim-fetch" -- open file with specify line
     use {
       'phaazon/hop.nvim',
       branch = 'v1', -- optional but strongly recommended
