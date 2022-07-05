@@ -1,4 +1,4 @@
-echo 'installing golan '
+echo 'installing golang'
 
 if type go &> /dev/null; then
   echo 'golang has been installed, skip installation.'
