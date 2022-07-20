@@ -140,7 +140,9 @@ alias icat='kitty +kitten icat'
 alias vim='nvim'
 alias lg='lazygit'
 # ref: https://news.ycombinator.com/item?id=31010090
-alias rfb="rg . --line-number --no-heading --color=always --smart-case \"\$@\" | fzf -d ':' -n 2.. --ansi --no-sort --preview-window 'right:50%:+{2}' --preview 'bat --style=numbers --color=always --highlight-line {2} {1}'"
+alias rfb="rg . --line-number --no-heading --color=always --colors 'match:fg:white' --colors 'match:style:nobold' --smart-case \"\$@\" | \
+    fzf --reverse -d ':' -n 2.. --ansi --preview-window 'right:50%:+{2}' \
+    --preview 'bat --style=numbers --color=always --highlight-line {2} {1}'"
 
 # config
 alias cfz='vim ~/.zshrc && source ~/.zshrc'
