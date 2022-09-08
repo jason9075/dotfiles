@@ -1,0 +1,31 @@
+" Style
+syntax on 
+set number
+set splitbelow
+set splitright
+set scrolloff=3
+set relativenumber
+hi CursorLineNr guifg=#af00af
+set cursorline
+set cursorlineopt=number 
+
+" Search
+set hlsearch
+set ignorecase
+set incsearch
+set smartcase
+noremap <CR> :nohlsearch<CR>
+
+" Gerenal
+set showcmd
+set noswapfile
+set linebreak
+
+" Tab Space
+set expandtab
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set showtabline=2
+
+inoremap kj <Esc>

@@ -34,6 +34,9 @@ setup_neovim() {
   ln -s $HOME/dotfiles/nvim $NVIM_CONFIG_DIR
   "$HOME/.local/bin/nvim" --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 
+  # use vim if env don't support nvim
+  ln -s $HOME/dotfiles/vim/vimrc $HOME/.vimrc
+
   echo 'neovim is ready!'
 }
 
