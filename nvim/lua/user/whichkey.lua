@@ -79,7 +79,7 @@ local opts = {
 }
 
 local mappings = {
-    ["/"] = { "<cmd>lua require(\"Comment.api\").toggle_current_linewise()<CR>", "Comment" },
+    ["/"] = { "<cmd>lua require(\"Comment.api\").toggle.linewise.current()<CR>", "Comment" },
     ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer (NvimTree)" },
     ["w"] = { "<cmd>w!<CR>", "Save" },
     ["W"] = { "<cmd>wq!<CR>", "Save & Quit" },
@@ -200,7 +200,7 @@ local vopts = {
     nowait = true, -- use `nowait` when creating keymaps
 }
 local vmappings = {
-    ["/"] = { "<ESC><CMD>lua require(\"Comment.api\").toggle_linewise_op(vim.fn.visualmode())<CR>", "Comment" },
+    ["/"] = { "<ESC><CMD>lua require(\"Comment.api\").toggle.linewise(vim.fn.visualmode())<CR>", "Comment" },
     r = {
         name = "Refactor",
         m = { "<Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR>", "Extract Method" },
