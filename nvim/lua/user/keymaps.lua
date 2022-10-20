@@ -108,9 +108,6 @@ keymap("v", "<leader>ri", [[<Esc><Cmd>lua require('refactoring').refactor('Inlin
 
 keymap("n", "<leader>ri", [[<Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]], opts)
 
--- Copilot
-keymap("i", "<C-l>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
-
 -- Hop
 keymap('n', '<leader><leader>f', "<cmd>HopChar2AC<cr>", opts)
 keymap('n', '<leader><leader>F', "<cmd>HopChar2BC<cr>", opts)
