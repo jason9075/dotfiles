@@ -9,7 +9,7 @@ configs.setup {
         "json", "solidity", "scala", "lua", "http", "toml", "comment",
         "vim", "godot_resource", "jsdoc", "dockerfile", "turtle", "jsonc", 
         "yaml", "python", "r", "cpp", "gomod", "bash", "cmake", "html", "help",
-        "java", "make", "kotlin", "markdown"
+        "java", "make", "kotlin", "markdown", "hcl"
     -- seldom use
     --	"scala", "hjson", "cuda", "tsx", "query", "json5", "fish", "latex", "llvm", "swift"
     },
