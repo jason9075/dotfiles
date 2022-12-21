@@ -109,13 +109,13 @@ keymap("v", "<leader>ri", [[<Esc><Cmd>lua require('refactoring').refactor('Inlin
 keymap("n", "<leader>ri", [[<Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]], opts)
 
 -- Hop
-keymap('n', '<leader><leader>f', "<cmd>HopChar2AC<cr>", opts)
-keymap('n', '<leader><leader>F', "<cmd>HopChar2BC<cr>", opts)
+keymap('n', '<leader><leader>f', "<cmd>HopChar1<cr>", opts)
+keymap('n', '<leader><leader>F', "<cmd>HopChar2<cr>", opts)
 keymap('n', '<leader><leader>w', "<cmd>HopWordAC<cr>",  opts)
 keymap('n', '<leader><leader>b', "<cmd>HopWordBC<cr>",  opts)
 keymap('n', '<leader><leader>s', "<cmd>HopPattern<cr>", opts)
-keymap('v', '<leader><leader>f', "<cmd>HopChar2AC<cr>", opts)
-keymap('v', '<leader><leader>F', "<cmd>HopChar2BC<cr>", opts)
+keymap('v', '<leader><leader>f', "<cmd>HopChar1<cr>", opts)
+keymap('v', '<leader><leader>F', "<cmd>HopChar2<cr>", opts)
 keymap('v', '<leader><leader>w', "<cmd>HopWordAC<cr>",  opts)
 keymap('v', '<leader><leader>b', "<cmd>HopWordBC<cr>",  opts)
 keymap('v', '<leader><leader>s', "<cmd>HopPattern<cr>", opts)
