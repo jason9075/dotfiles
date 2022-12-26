@@ -1,0 +1,14 @@
+{
+    "print_string": {
+        "prefix": "pt",
+        "body": [
+            "print(\"$1\")"
+        ]
+    },
+    "print_debug": {
+        "prefix": "ptx",
+        "body": [
+            "print(\"xxxxxxxx $1\")"
+        ]
+    }
+}
