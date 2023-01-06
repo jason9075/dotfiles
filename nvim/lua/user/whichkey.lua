@@ -87,8 +87,6 @@ local mappings = {
     ["Q"] = { "<cmd>q!<CR>", "Quit!" },
     ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
     ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
-    ["t"] = { "<cmd>TroubleToggle<cr>", "Trouble" },
-    ["m"] = { "<cmd>MarkdownPreviewToggle<cr>", "Markdown Preview" },
 
     p = {
         name = "Packer",

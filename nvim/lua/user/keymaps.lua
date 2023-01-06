@@ -63,9 +63,6 @@ keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
 keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
--- Markdown Preview
-keymap("n", "<leader>m", "<cmd>MarkdownPreviewToggle<cr>", opts)
-
 -- Nvimtree
 keymap("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", opts)
 
@@ -86,9 +83,6 @@ keymap('n', '<leader>fh', "<cmd>FzfLua help_tags<CR>", opts)
 keymap('n', '<leader>go', "<cmd>FzfLua git_status<cr>", opts)
 keymap('n', '<leader>gb', "<cmd>FzfLua git_branches<cr>", opts)
 keymap('n', '<leader>gc', "<cmd>FzfLua git_commits<cr>", opts)
-
--- Trouble
-keymap("n", "<leader>t", "<cmd>TroubleToggle<cr>", opts)
 
 -- Dap
 keymap("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", opts)
