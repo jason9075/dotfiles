@@ -1,3 +1,4 @@
+require("impatient")
 require("globals")
 require("user.options")
 require("user.keymaps")

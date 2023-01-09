@@ -55,6 +55,7 @@ return packer.startup(function(use)
   use("moll/vim-bbye") -- close buffer command when you use bufferline
   use("nvim-lualine/lualine.nvim")
   use("wsdjeg/vim-fetch") -- open file with specify line
+  use("lewis6991/impatient.nvim") -- speed up startup time
   use({
     "phaazon/hop.nvim",
     branch = "v1", -- optional but strongly recommended
