@@ -2,7 +2,7 @@
 -- go to the above and then enter <c-v>u<unicode> and the symbold should appear
 -- or go here and upload the font file: https://mathew-kurian.github.io/CharacterMap/
 -- find more here: https://www.nerdfonts.com/cheat-sheet
-if vim.fn.has "mac" == 1 then
+if vim.fn.has("mac") == 1 then
   -- elseif vim.fn.has "mac" == 1 then
   return {
     kind = {
@@ -47,19 +47,31 @@ if vim.fn.has "mac" == 1 then
       Object = "",
     },
     documents = {
-      File = "",
-      Files = "",
-      Folder = "",
-      OpenFolder = "",
+      File = "",
+      Files = "",
+      FileSymlink = "",
+      FindFile = "",
+      Folder = "",
+      OpenFolder = "",
+      FolderSymlink = "",
+      EmptyFolder = "",
+      EmptyFolderOpen = "",
     },
     git = {
       Add = "",
       Mod = "",
       Remove = "",
       Ignore = "",
-      Rename = "",
       Diff = "",
       Repo = "",
+      Ignored = "◌",
+      Renamed = "➜",
+      Staged = "S",
+      Unmerged = "",
+      Unstaged = "",
+      Untracked = "U",
+      Octoface = "",
+      Branch = "",
     },
     ui = {
       Lock = "",
@@ -86,6 +98,7 @@ if vim.fn.has "mac" == 1 then
       Note = "",
       BookMark = "",
       Pencil = "",
+      Symlink = "",
       -- ChevronRight = "",
       ChevronRight = ">",
       Table = "",
@@ -144,10 +157,15 @@ else
       Object = " ",
     },
     documents = {
-      File = " ",
-      Files = " ",
-      Folder = " ",
-      OpenFolder = " ",
+      File = "",
+      Files = "",
+      FileSymlink = "",
+      FindFile = "",
+      Folder = "",
+      OpenFolder = "",
+      FolderSymlink = "",
+      EmptyFolder = "",
+      EmptyFolderOpen = "",
     },
     git = {
       Add = " ",
@@ -157,6 +175,14 @@ else
       Rename = " ",
       Diff = " ",
       Repo = " ",
+      Ignored = "◌",
+      Renamed = "➜",
+      Staged = "S",
+      Unmerged = "",
+      Unstaged = "",
+      Untracked = "U",
+      Octoface = "",
+      Branch = "",
     },
     ui = {
       Lock = " ",
@@ -183,6 +209,7 @@ else
       Note = " ",
       BookMark = " ",
       Pencil = " ",
+      Symlink = "",
       ChevronRight = "",
       Table = " ",
       Calendar = " ",
