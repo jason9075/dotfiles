@@ -46,5 +46,5 @@ sudo passwd <username>
 ```
 https://github.com/jonz94/dotfiles
 
-https://github.com/LunarVim/Neovim-from-scratch
+https://github.com/LunarVim/LunarVim
 ```
