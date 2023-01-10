@@ -3,11 +3,10 @@ if not status_ok then
   return
 end
 
-bufferline.setup {
+bufferline.setup({
   options = {
     numbers = "none", -- | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string,
     close_command = "Bdelete! %d", -- can be a string | function, see "Mouse actions"
-    right_mouse_command = "Bdelete! %d", -- can be a string | function, see "Mouse actions"
     left_mouse_command = "buffer %d", -- can be a string | function, see "Mouse actions"
     middle_mouse_command = nil, -- can be a string | function, see "Mouse actions"
     -- NOTE: this plugin is designed with this icon in mind,
@@ -80,12 +79,10 @@ bufferline.setup {
       fg = { attribute = "fg", highlight = "TabLine" },
       bg = { attribute = "bg", highlight = "TabLine" },
     },
-
-    -- buffer_selected = {
-    --   fg = {attribute='fg',highlight='#ff0000'},
-    --   bg = {attribute='bg',highlight='#0000ff'},
-    --   gui = 'none'
-    --   },
+    buffer_selected = {
+      fg = { attribute = "fg", highlight = "#ff0000" },
+      bg = { attribute = "bg", highlight = "#0000ff" },
+    },
     buffer_visible = {
       fg = { attribute = "fg", highlight = "TabLine" },
       bg = { attribute = "bg", highlight = "TabLine" },
@@ -113,7 +110,6 @@ bufferline.setup {
       bg = { attribute = "bg", highlight = "TabLine" },
     },
     tab_close = {
-      -- fg = {attribute='fg',highlight='LspDiagnosticsDefaultError'},
       fg = { attribute = "fg", highlight = "TabLineSel" },
       bg = { attribute = "bg", highlight = "Normal" },
     },
@@ -164,4 +160,4 @@ bufferline.setup {
       bg = { attribute = "bg", highlight = "Normal" },
     },
   },
-}
+})

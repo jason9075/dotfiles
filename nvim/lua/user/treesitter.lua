@@ -6,42 +6,43 @@ end
 configs.setup({
   -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   ensure_installed = {
-    "css",
-    "scss",
-    "regex",
-    "go",
-    "rst",
-    "typescript",
-    "json",
-    "solidity",
-    "scala",
-    "lua",
-    "http",
-    "toml",
-    "comment",
-    "vim",
-    "godot_resource",
-    "jsdoc",
-    "dockerfile",
-    "turtle",
-    "jsonc",
-    "yaml",
-    "python",
-    "r",
-    "cpp",
-    "gomod",
-    "bash",
-    "cmake",
-    "html",
-    "help",
-    "java",
-    "make",
-    "kotlin",
-    "markdown",
-    "hcl",
+    --[[ "css", ]]
+    --[[ "scss", ]]
+    --[[ "regex", ]]
+    --[[ "go", ]]
+    --[[ "rst", ]]
+    --[[ "typescript", ]]
+    --[[ "json", ]]
+    --[[ "solidity", ]]
+    --[[ "scala", ]]
+    --[[ "lua", ]]
+    --[[ "http", ]]
+    --[[ "toml", ]]
+    --[[ "comment", ]]
+    --[[ "vim", ]]
+    --[[ "godot_resource", ]]
+    --[[ "jsdoc", ]]
+    --[[ "dockerfile", ]]
+    --[[ "turtle", ]]
+    --[[ "jsonc", ]]
+    --[[ "yaml", ]]
+    --[[ "python", ]]
+    --[[ "r", ]]
+    --[[ "cpp", ]]
+    --[[ "gomod", ]]
+    --[[ "bash", ]]
+    --[[ "cmake", ]]
+    --[[ "html", ]]
+    --[[ "help", ]]
+    --[[ "java", ]]
+    --[[ "make", ]]
+    --[[ "kotlin", ]]
+    --[[ "markdown", ]]
+    --[[ "hcl", ]]
     -- seldom use
     --
   },
+  auto_install = true, -- Automatically install missing parsers when entering buffer
   sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
   ignore_install = { "scala", "hjson", "cuda", "tsx", "query", "json5", "fish", "latex", "llvm", "swift" }, -- List of parsers to ignore installing
   autopairs = {

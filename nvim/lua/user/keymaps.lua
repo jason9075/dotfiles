@@ -65,42 +65,6 @@ keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 -- Nvimtree
 keymap("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", opts)
 
--- LSP
-keymap("n", "<leader>rf", "<cmd>LspZeroFormat<cr>", opts)
-keymap("n", "<leader>rr", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
-keymap("n", "<leader>fD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-keymap("n", "<leader>fd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-keymap("n", "<leader>sh", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-keymap("n", "<leader>sl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-
--- Fzf Lua
-keymap("n", "<leader>fr", "<cmd>FzfLua lsp_references<cr>", opts)
-keymap("n", "<leader>ff", "<cmd>FzfLua files<CR>", opts)
-keymap("n", "<leader>fg", "<cmd>FzfLua live_grep<CR>", opts)
-keymap("n", "<leader>fh", "<cmd>FzfLua help_tags<CR>", opts)
-keymap("n", "<leader>fi", "<cmd>FzfLua lsp_implementations<CR>", opts)
-keymap("n", "<leader>go", "<cmd>FzfLua git_status<cr>", opts)
-keymap("n", "<leader>gb", "<cmd>FzfLua git_branches<cr>", opts)
-keymap("n", "<leader>gc", "<cmd>FzfLua git_commits<cr>", opts)
-
--- Dap
-keymap("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", opts)
-keymap("n", "<leader>dc", "<cmd>lua require'dap'.continue()<cr>", opts)
-keymap("n", "<leader>di", "<cmd>lua require'dap'.step_into()<cr>", opts)
-keymap("n", "<leader>do", "<cmd>lua require'dap'.step_over()<cr>", opts)
-keymap("n", "<leader>dO", "<cmd>lua require'dap'.step_out()<cr>", opts)
-keymap("n", "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>", opts)
-keymap("n", "<leader>dl", "<cmd>lua require'dap'.run_last()<cr>", opts)
-keymap("n", "<leader>du", "<cmd>lua require'dapui'.toggle()<cr>", opts)
-keymap("n", "<leader>dx", "<cmd>lua require'dap'.terminate()<cr>", opts)
-
--- Refacror
-keymap("v", "<leader>rm", [[<Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR>]], opts)
-keymap("v", "<leader>rv", [[<Esc><Cmd>lua require('refactoring').refactor('Extract Variable')<CR>]], opts)
-keymap("v", "<leader>ri", [[<Esc><Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]], opts)
-
-keymap("n", "<leader>ri", [[<Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]], opts)
-
 -- Hop
 keymap("n", "<leader><leader>f", "<cmd>HopChar1<cr>", opts)
 keymap("n", "<leader><leader>F", "<cmd>HopChar2<cr>", opts)
