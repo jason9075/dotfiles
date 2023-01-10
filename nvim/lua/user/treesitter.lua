@@ -6,20 +6,23 @@ end
 configs.setup({
   -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   ensure_installed = {
+    "regex",
+    "lua",
+    "vim",
+    "json",
+    "markdown",
+    "make",
+    "bash",
     --[[ "css", ]]
     --[[ "scss", ]]
-    --[[ "regex", ]]
     --[[ "go", ]]
     --[[ "rst", ]]
     --[[ "typescript", ]]
-    --[[ "json", ]]
     --[[ "solidity", ]]
     --[[ "scala", ]]
-    --[[ "lua", ]]
     --[[ "http", ]]
     --[[ "toml", ]]
     --[[ "comment", ]]
-    --[[ "vim", ]]
     --[[ "godot_resource", ]]
     --[[ "jsdoc", ]]
     --[[ "dockerfile", ]]
@@ -30,14 +33,11 @@ configs.setup({
     --[[ "r", ]]
     --[[ "cpp", ]]
     --[[ "gomod", ]]
-    --[[ "bash", ]]
     --[[ "cmake", ]]
     --[[ "html", ]]
     --[[ "help", ]]
     --[[ "java", ]]
-    --[[ "make", ]]
     --[[ "kotlin", ]]
-    --[[ "markdown", ]]
     --[[ "hcl", ]]
     -- seldom use
     --

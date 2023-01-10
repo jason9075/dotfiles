@@ -30,13 +30,13 @@ if not status_ok then
 end
 
 -- Have packer use a popup window
-packer.init({
-  display = {
-    open_fn = function()
-      return require("packer.util").float({ border = "rounded" })
-    end,
-  },
-})
+--[[ packer.init({ ]]
+--[[   display = { ]]
+--[[     open_fn = function() ]]
+--[[       return require("packer.util").float({ border = "rounded" }) ]]
+--[[     end, ]]
+--[[   }, ]]
+--[[ }) ]]
 
 return packer.startup(function(use)
   use("wbthomason/packer.nvim") -- Have packer manage itself
@@ -56,6 +56,7 @@ return packer.startup(function(use)
   use("nvim-lualine/lualine.nvim")
   use("wsdjeg/vim-fetch") -- open file with specify line
   use("lewis6991/impatient.nvim") -- speed up startup time
+  use("ThePrimeagen/harpoon")
   use({
     "phaazon/hop.nvim",
     branch = "v1", -- optional but strongly recommended
@@ -105,7 +106,7 @@ return packer.startup(function(use)
   use("JoosepAlviste/nvim-ts-context-commentstring")
 
   -- git
-  use("lewis6991/gitsigns.nvim")
+  use("lewis6991/gitsigns.nvim") -- use to display line change on the left of line numbers
 
   -- DAP
   use("mfussenegger/nvim-dap")

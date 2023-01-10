@@ -49,4 +49,5 @@ vim.diagnostic.config({
   severity_sort = true,
 })
 
+require("user.lsp.luasnip")
 require("user.lsp.null-ls")
