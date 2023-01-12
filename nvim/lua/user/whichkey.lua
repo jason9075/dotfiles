@@ -186,17 +186,17 @@ local mappings = {
   d = {
     name = "Debug",
     b = { "<cmd>lua require'dap'.toggle_breakpoint()<CR>", "Breakpoint" },
-    c = { "<cmd>lua require'dap'.continue()<CR>", "Continue" },
+    c = { "<cmd>lua require'dap'.continue()<CR>", "Start/Continue" },
     C = { "<cmd>lua require'dap'.run_to_cursor()<CR>", "Run To Cursor" },
-    d = { "<cmd>lua require'dap'.disconnect()<CR>", "Disconnect" },
     i = { "<cmd>lua require'dap'.step_into()<CR>", "Into" },
     o = { "<cmd>lua require'dap'.step_over()<CR>", "Over" },
     O = { "<cmd>lua require'dap'.step_out()<CR>", "Out" },
     p = { "<cmd>lua require'dap'.pause()<CR>", "Pause" },
     r = { "<cmd>lua require'dap'.repl.toggle()<CR>", "Repl" },
     l = { "<cmd>lua require'dap'.run_last()<CR>", "Last" },
+    x = { "<cmd>lua require'dap'.close()<CR>", "Close" },
+    d = { "<cmd>lua require'dap'.disconnect()<CR><cmd>lua require'dap'.repl.close()<CR>", "Disconnect" },
     u = { "<cmd>lua require'dapui'.toggle()<CR>", "UI" },
-    x = { "<cmd>lua require'dap'.terminate()<CR>", "Exit" },
   },
 
   -- https://github.com/nvim-tree/nvim-tree.lua/blob/master/doc/nvim-tree-lua.txt
