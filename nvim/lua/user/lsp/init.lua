@@ -3,7 +3,7 @@ lsp.preset("recommended")
 
 -- Install these servers
 lsp.ensure_installed({
-  "sumneko_lua",
+  "lua_ls",
 })
 
 -- Python

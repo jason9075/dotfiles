@@ -38,6 +38,8 @@ keymap("n", "<S-h>", ":bprevious<CR>", opts)
 -- Press jk fast to exit
 keymap("i", "kj", "<ESC>", opts)
 
+keymap("i", "<C-l>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
+
 -- Visual --
 -- Stay in indent mode
 --keymap("v", "<", "<gv", opts)
@@ -46,6 +48,7 @@ keymap("i", "kj", "<ESC>", opts)
 -- Move text up and down
 keymap("v", "<A-j>", ":m .+1<CR>==", opts)
 keymap("v", "<A-k>", ":m .-2<CR>==", opts)
+-- Paste without loss register
 keymap("v", "p", '"_dP', opts)
 
 -- Visual Block --

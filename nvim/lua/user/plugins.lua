@@ -37,7 +37,6 @@ end
 --[[     end, ]]
 --[[   }, ]]
 --[[ }) ]]
-
 return packer.startup(function(use)
   use("wbthomason/packer.nvim") -- Have packer manage itself
   use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
@@ -63,6 +62,7 @@ return packer.startup(function(use)
   })
 
   -- LSP
+  use("github/copilot.vim")
   use({
     "VonHeikemen/lsp-zero.nvim",
     requires = {
