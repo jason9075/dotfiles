@@ -44,13 +44,6 @@ nvim_tree.setup({
     width = 30,
     hide_root_folder = false,
     side = "left",
-    mappings = {
-      custom_only = false,
-      list = {
-        { key = { "<CR>", "o" }, cb = tree_cb("edit") },
-        { key = "v", cb = tree_cb("vsplit") },
-      },
-    },
     number = false,
     relativenumber = false,
   },

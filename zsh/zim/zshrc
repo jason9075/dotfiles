@@ -128,7 +128,7 @@ alias rfb="rg . --line-number --no-heading --color=always --colors 'match:fg:whi
 
 # config
 alias cfz='vim ~/.zshrc && source ~/.zshrc'
-alias cfv='vim ~/.config/nvim/init.lua'
+alias cfv='vim ~/.config/nvim/lua/user/plugins.lua'
 alias cfk='vim ~/.config/kitty/kitty.conf'
 
 # tmux
@@ -146,3 +146,14 @@ export PATH="$HOME/node_modules/.bin:$PATH"
 export PATH="$HOME/miniconda3/bin:$PATH"
 export PATH="$GOROOT/bin:$PATH"
 export PATH="$GOPATH/bin:$PATH"
+
+export PATH="$PATH:$HOME/flutter/bin"
+export PATH="$PATH:$HOME/Android/Sdk/emulator"
+
+# export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/miniconda3/lib/
+# export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/miniconda3/lib/python3.9/site-packages/tensorrt/
+# export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/miniconda3/envs/control/lib
+# export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/miniconda3/envs/control/lib/python3.9/site-packages/tensorrt/
+
+alias vpnon='sudo wg-quick up wg0'
+alias vpnoff='sudo wg-quick down wg0'
