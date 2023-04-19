@@ -6,6 +6,7 @@ if type apt-get &> /dev/null; then
   sudo apt install -y tig 
   sudo apt install -y tmux 
   sudo apt install -y fzf 
+  sudo apt install -y grc
 elif type brew &> /dev/null; then
   brew install htop
   brew install ripgrep

@@ -136,6 +136,17 @@ alias tn='tmux new -s' # Start a new session and give a name
 alias ta='tmux a' # Attach to last session
 alias tkill="for s in \$(tmux list-sessions | awk '{print \$1}' | rg ':' -r '' | fzf); do tmux kill-session -t \$s; done;" # Kill session by fzf
 
+# grc
+alias head='grc head'
+alias tail='grc tail'
+alias ping='grc ping'
+alias traceroute='grc traceroute'
+alias netstat='grc netstat'
+alias ifconfig='grc ifconfig'
+alias whois='grc whois'
+alias dig='grc dig'
+alias ps='grc ps'
+
 # GOLANG
 export GOROOT="$HOME/.go"
 export GOPATH="$HOME/go"
@@ -149,11 +160,6 @@ export PATH="$GOPATH/bin:$PATH"
 
 export PATH="$PATH:$HOME/flutter/bin"
 export PATH="$PATH:$HOME/Android/Sdk/emulator"
-
-# export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/miniconda3/lib/
-# export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/miniconda3/lib/python3.9/site-packages/tensorrt/
-# export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/miniconda3/envs/control/lib
-# export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/miniconda3/envs/control/lib/python3.9/site-packages/tensorrt/
 
 alias vpnon='sudo wg-quick up wg0'
 alias vpnoff='sudo wg-quick down wg0'
