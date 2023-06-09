@@ -85,7 +85,7 @@ local mappings = {
   ["W"] = { "<cmd>wqa<CR>", "Save & Quit" },
   ["q"] = { "<cmd>lua require('user.utils.function').smart_quit()<CR>", "Quit" },
   ["Q"] = { "<cmd>qa!<CR>", "Quit!" },
-  ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
+  ["x"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
   b = {
     name = "Buffers",
     j = { "<cmd>BufferLinePick<CR>", "Jump" },
@@ -111,7 +111,6 @@ local mappings = {
       "Sort by language",
     },
   },
-
   p = {
     name = "Packer",
     c = { "<cmd>PackerCompile<CR>", "Compile" },
@@ -120,7 +119,6 @@ local mappings = {
     S = { "<cmd>PackerStatus<CR>", "Status" },
     u = { "<cmd>PackerUpdate<CR>", "Update" },
   },
-
   g = {
     name = "Git",
     j = { "<cmd>lua require 'gitsigns'.next_hunk()<CR>", "Next Hunk" },
@@ -136,7 +134,6 @@ local mappings = {
     c = { "<cmd>FzfLua git_commits<CR>", "Checkout commit" },
     d = { "<cmd>Gitsigns diffthis HEAD<CR>", "Diff" },
   },
-
   h = {
     name = "Harpoon",
     a = { "<cmd>lua require('harpoon.mark').add_file()<CR>", "Add" },
@@ -146,7 +143,6 @@ local mappings = {
     j = { "<cmd>lua require('harpoon.ui').nav_next()<CR>", "Next Mark" },
     k = { "<cmd>lua require('harpoon.ui').nav_prev()<CR>", "Previous Mark" },
   },
-
   l = {
     name = "LSP",
     a = { "<cmd>FzfLua lsp_code_actions<CR>", "Code Action" },
@@ -157,14 +153,12 @@ local mappings = {
     l = { "<cmd>lua vim.lsp.codelens.run()<CR>", "CodeLens Action" },
     q = { "<cmd>FzfLua qucikfix<CR>", "Quickfix" },
   },
-
   r = {
     name = "Refactor",
     f = { "<cmd>LspZeroFormat<CR>", "Format" },
     r = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
     i = { "<Cmd>lua require('refactoring').refactor('Inline Variable')<CR>", "Inline Variable" },
   },
-
   f = {
     name = "Find",
     D = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "Declaration" },
@@ -176,13 +170,11 @@ local mappings = {
     h = { "<cmd>FzfLua help_tags<CR>", "Help Tags" },
     k = { "<cmd>FzfLua keymaps<CR>", "Keymappings" },
   },
-
   s = {
     name = "Show Info",
     h = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Hover" },
     l = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Line Diagnostic" },
   },
-
   d = {
     name = "Debug",
     b = { "<cmd>lua require'dap'.toggle_breakpoint()<CR>", "Breakpoint" },
@@ -198,7 +190,6 @@ local mappings = {
     d = { "<cmd>lua require'dap'.disconnect()<CR><cmd>lua require'dap'.repl.close()<CR>", "Disconnect" },
     u = { "<cmd>lua require'dapui'.toggle()<CR>", "UI" },
   },
-
   -- https://github.com/nvim-tree/nvim-tree.lua/blob/master/doc/nvim-tree-lua.txt
   n = {
     name = "nvimTree Actions",
