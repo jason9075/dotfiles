@@ -83,6 +83,7 @@ local mappings = {
   ["e"] = { "<cmd>NvimTreeToggle<CR>", "Explorer (NvimTree)" },
   ["w"] = { "<cmd>w!<CR>", "Save" },
   ["W"] = { "<cmd>wqa<CR>", "Save & Quit" },
+  ["p"] = { "<cmd>Lazy<CR>", "Plugins" },
   ["q"] = { "<cmd>lua require('user.utils.function').smart_quit()<CR>", "Quit" },
   ["Q"] = { "<cmd>qa!<CR>", "Quit!" },
   ["x"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
@@ -90,7 +91,7 @@ local mappings = {
     name = "Buffers",
     j = { "<cmd>BufferLinePick<CR>", "Jump" },
     f = { "<cmd>FzfLua buffers<CR>", "Find" },
-    b = { "<cmd>BufferLineCyclePrev<CR>", "Previous" },
+    p = { "<cmd>BufferLineCyclePrev<CR>", "Previous" },
     n = { "<cmd>BufferLineCycleNext<CR>", "Next" },
     c = {
       "<cmd>BufferLinePickClose<CR>",
@@ -110,14 +111,6 @@ local mappings = {
       "<cmd>BufferLineSortByExtension<CR>",
       "Sort by language",
     },
-  },
-  p = {
-    name = "Packer",
-    c = { "<cmd>PackerCompile<CR>", "Compile" },
-    i = { "<cmd>PackerInstall<CR>", "Install" },
-    s = { "<cmd>PackerSync<CR>", "Sync" },
-    S = { "<cmd>PackerStatus<CR>", "Status" },
-    u = { "<cmd>PackerUpdate<CR>", "Update" },
   },
   g = {
     name = "Git",
