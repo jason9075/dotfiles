@@ -25,7 +25,13 @@ local plugins = {
   },
   "nvim-lua/plenary.nvim", -- Useful lua functions used by lots of plugins
   "windwp/nvim-autopairs", -- Autopairs, integrates with both cmp and treesitter
-  "numToStr/Comment.nvim", -- Easily comment stuff
+  {
+    "numToStr/Comment.nvim", -- Easily comment stuff
+    event = "VeryLazy",
+    config = function()
+      require("Comment").setup()
+    end,
+  },
 
   -- UI plugins
   "nvim-tree/nvim-web-devicons",
@@ -79,6 +85,13 @@ local plugins = {
     branch = "v2", -- optional but strongly recommended
   },
   { "ThePrimeagen/harpoon", event = "VeryLazy" },
+  {
+    "notjedi/nvim-rooter.lua",
+    lazy = false,
+    config = function()
+      require("nvim-rooter").setup()
+    end,
+  },
 
   -- LSP
   {
@@ -128,9 +141,6 @@ local plugins = {
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
-    dependencies = {
-      "JoosepAlviste/nvim-ts-context-commentstring",
-    },
   },
 
   -- Git
