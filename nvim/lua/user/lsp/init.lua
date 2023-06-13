@@ -1,4 +1,5 @@
 local lsp = require("lsp-zero")
+
 lsp.preset("recommended")
 
 -- Install these servers
@@ -51,3 +52,4 @@ vim.diagnostic.config({
 
 require("user.lsp.luasnip")
 require("user.lsp.null-ls")
+require("user.lsp.cmp")

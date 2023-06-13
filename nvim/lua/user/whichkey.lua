@@ -52,7 +52,7 @@ local setup = {
   layout = {
     height = { min = 4, max = 25 }, -- min and max height of the columns
     width = { min = 20, max = 50 }, -- min and max width of the columns
-    spacing = 3, -- spacing between columns
+    spacing = 4, -- spacing between columns
     align = "left", -- align columns left, center or right
   },
   ignore_missing = true, -- enable this to hide mappings for which you didn't specify a label
@@ -80,7 +80,7 @@ local opts = {
 
 local mappings = {
   ["/"] = { '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', "Comment" },
-  ["e"] = { "<cmd>NvimTreeToggle<CR>", "Explorer (NvimTree)" },
+  ["e"] = { "<cmd>NeoTreeRevealToggle<CR>", "Explorer (NeoTree)" },
   ["w"] = { "<cmd>w!<CR>", "Save" },
   ["W"] = { "<cmd>wqa<CR>", "Save & Quit" },
   ["p"] = { "<cmd>Lazy<CR>", "Plugins" },
@@ -182,23 +182,6 @@ local mappings = {
     x = { "<cmd>lua require'dap'.close()<CR>", "Close" },
     d = { "<cmd>lua require'dap'.disconnect()<CR><cmd>lua require'dap'.repl.close()<CR>", "Disconnect" },
     u = { "<cmd>lua require'dapui'.toggle()<CR>", "UI" },
-  },
-  -- https://github.com/nvim-tree/nvim-tree.lua/blob/master/doc/nvim-tree-lua.txt
-  n = {
-    name = "nvimTree Actions",
-    a = { "<cmd>lua require('nvim-tree.api').fs.create()<CR>", "Create" },
-    r = { "<cmd>lua require('nvim-tree.api').fs.rename_node()<CR>", "Rename" },
-    d = { "<cmd>lua require('nvim-tree.api').fs.remove()<CR>", "Remove" },
-    p = { "<cmd>lua require('nvim-tree.api').fs.paste()<CR>", "Paste File" },
-    x = { "<cmd>lua require('nvim-tree.api').fs.cut()<CR>", "Cut File" },
-    c = { "<cmd>lua require('nvim-tree.api').fs.copy.node()<CR>", "Copy File" },
-    y = { "<cmd>lua require('nvim-tree.api').fs.copy.filename()<CR>", "Copy Name" },
-    Y = { "<cmd>lua require('nvim-tree.api').fs.copy.absolute_path()<CR>", "Copy Path" },
-    R = { "<cmd>lua require('nvim-tree.api').tree.reload()<CR>", "Refresh" },
-    h = { "<cmd>lua require('nvim-tree.api').tree.toggle_help()<CR>", "Help" },
-    I = { "<cmd>lua require('nvim-tree.api').tree.toggle_gitignore_filter()<CR>", "Show/Hide Ignore Files" },
-    H = { "<cmd>lua require('nvim-tree.api').tree.toggle_hidden_filter()<CR>", "Show/Hide Hidden Files" },
-    v = { "<cmd>lua require('nvim-tree.api').node.open.vertical()<CR>", "Open Vertical" },
   },
 }
 

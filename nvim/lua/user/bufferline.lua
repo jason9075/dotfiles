@@ -25,7 +25,7 @@ bufferline.setup({
     tab_size = 21,
     diagnostics = false, -- | "nvim_lsp" | "coc",
     diagnostics_update_in_insert = false,
-    offsets = { { filetype = "NvimTree", text = "Explorer", padding = 1 } },
+    offsets = { { filetype = "NeoTree", text = "Explorer", padding = 1 } },
     show_buffer_icons = true,
     show_buffer_close_icons = true,
     show_close_icon = true,
@@ -54,7 +54,6 @@ bufferline.setup({
       fg = { attribute = "fg", highlight = "TabLine" },
       bg = { attribute = "bg", highlight = "TabLine" },
     },
-
     close_button = {
       fg = { attribute = "fg", highlight = "TabLine" },
       bg = { attribute = "bg", highlight = "TabLine" },
@@ -63,7 +62,6 @@ bufferline.setup({
       fg = { attribute = "fg", highlight = "TabLine" },
       bg = { attribute = "bg", highlight = "TabLine" },
     },
-
     tab_selected = {
       fg = { attribute = "fg", highlight = "Normal" },
       bg = { attribute = "bg", highlight = "Normal" },
@@ -76,7 +74,6 @@ bufferline.setup({
       fg = { attribute = "fg", highlight = "TabLineSel" },
       bg = { attribute = "bg", highlight = "Normal" },
     },
-
     duplicate_selected = {
       fg = { attribute = "fg", highlight = "TabLineSel" },
       bg = { attribute = "bg", highlight = "TabLineSel" },
@@ -92,7 +89,6 @@ bufferline.setup({
       bg = { attribute = "bg", highlight = "TabLine" },
       italic = true,
     },
-
     modified = {
       fg = { attribute = "fg", highlight = "TabLine" },
       bg = { attribute = "bg", highlight = "TabLine" },
@@ -105,7 +101,6 @@ bufferline.setup({
       fg = { attribute = "fg", highlight = "TabLine" },
       bg = { attribute = "bg", highlight = "TabLine" },
     },
-
     separator = {
       fg = { attribute = "bg", highlight = "TabLine" },
       bg = { attribute = "bg", highlight = "TabLine" },

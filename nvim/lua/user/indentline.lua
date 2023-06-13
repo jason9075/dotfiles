@@ -9,7 +9,7 @@ vim.g.indent_blankline_filetype_exclude = {
   "startify",
   "dashboard",
   "neogitstatus",
-  "NvimTree",
+  "NeoTree",
   "Trouble",
 }
 vim.g.indentLine_enabled = 1

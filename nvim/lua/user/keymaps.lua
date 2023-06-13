@@ -65,8 +65,8 @@ keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
 keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
--- Nvimtree
-keymap("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", opts)
+-- NeoTree
+keymap("n", "<leader>e", "<cmd>NeoTreeRevealToggle<CR>", opts)
 
 -- Hop
 keymap("n", "<leader><leader>f", "<cmd>HopChar1<CR>", opts)
