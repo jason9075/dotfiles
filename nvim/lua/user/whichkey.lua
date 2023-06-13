@@ -60,6 +60,18 @@ local setup = {
   show_help = true, -- show help message on the command line when the popup is visible
   triggers = "auto", -- automatically setup triggers
   -- triggers = {"<leader>"} -- or specify a list manually
+  triggers_nowait = {
+    -- marks
+    "`",
+    "'",
+    "g`",
+    "g'",
+    -- registers
+    '"',
+    "<c-r>",
+    -- spelling
+    "z=",
+  },
   triggers_blacklist = {
     -- list of mode / prefixes that should never be hooked by WhichKey
     -- this is mostly relevant for key maps that start with a native binding

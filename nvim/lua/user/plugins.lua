@@ -10,13 +10,14 @@ if not vim.loop.fs_stat(lazypath) then
     lazypath,
   })
 end
+
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
   {
     "EdenEast/nightfox.nvim",
     lazy = false, -- make sure we load this during startup if it is your main colorscheme
-    priority = 1000, -- make sure to load this before all the other start plugins
+    priority = 1000,
     config = function()
       -- load the colorscheme here
       vim.cmd([[colorscheme nightfox]])
@@ -25,13 +26,24 @@ local plugins = {
   "nvim-lua/plenary.nvim", -- Useful lua functions used by lots of plugins
   "windwp/nvim-autopairs", -- Autopairs, integrates with both cmp and treesitter
   "numToStr/Comment.nvim", -- Easily comment stuff
-  { "nvim-tree/nvim-web-devicons", lazy = true },
+
+  -- UI plugins
+  "nvim-tree/nvim-web-devicons",
+  "lukas-reineke/indent-blankline.nvim",
+  "SmiteshP/nvim-gps", -- show status line
+  "akinsho/bufferline.nvim",
+  { "famiu/bufdelete.nvim", event = "VeryLazy" }, -- close buffer command when you use bufferline
+  "nvim-lualine/lualine.nvim",
   {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v2.x",
+    cmd = "NeoTreeRevealToggle",
     dependencies = {
       "MunifTanjim/nui.nvim",
     },
+    config = function()
+      require("user.neo-tree")
+    end,
   },
   {
     "folke/noice.nvim",
@@ -44,23 +56,38 @@ local plugins = {
       "rcarriga/nvim-notify",
     },
   },
-  "lukas-reineke/indent-blankline.nvim",
-  { "folke/which-key.nvim", lazy = true },
-  { "akinsho/toggleterm.nvim", event = "VeryLazy" },
-  "SmiteshP/nvim-gps", -- show status line
-  { "akinsho/bufferline.nvim", event = "VeryLazy" },
-  "moll/vim-bbye", -- close buffer command when you use bufferline
-  { "nvim-lualine/lualine.nvim", event = "VeryLazy" },
-  "wsdjeg/vim-fetch", -- open file with specify line
+
+  --  Tool
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    init = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+    end,
+  },
+  {
+    "akinsho/toggleterm.nvim",
+    keys = { "<C-\\>", "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" },
+    config = function()
+      require("user.toggleterm")
+    end,
+  },
+  { "wsdjeg/vim-fetch", lazy = false }, -- open file with specify line
   {
     "phaazon/hop.nvim",
     branch = "v2", -- optional but strongly recommended
-    event = "VeryLazy",
   },
-  "ThePrimeagen/harpoon",
+  { "ThePrimeagen/harpoon", event = "VeryLazy" },
 
   -- LSP
-  "github/copilot.vim",
+  {
+    "github/copilot.vim",
+    event = "VeryLazy",
+    config = function()
+      vim.g.copilot_no_tab_map = true
+    end,
+  },
   {
     "VonHeikemen/lsp-zero.nvim",
     branch = "v2.x",
@@ -94,34 +121,61 @@ local plugins = {
     },
   },
 
-  -- fuzzy find
-  {
-    "junegunn/fzf",
-    build = "./install --bin",
-  },
-  "ibhagwan/fzf-lua",
-  "airblade/vim-rooter", -- will find .gitignore as project root folder to use fuzzy search
+  -- Fuzzy finder
+  { "ibhagwan/fzf-lua", event = "VeryLazy" },
 
-  -- treesitter
+  -- Treesitter
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
+    dependencies = {
+      "JoosepAlviste/nvim-ts-context-commentstring",
+    },
   },
-  "JoosepAlviste/nvim-ts-context-commentstring",
 
-  -- git
-  { "lewis6991/gitsigns.nvim", event = "VeryLazy" }, -- use to display line change on the left of line numbers
+  -- Git
+  "lewis6991/gitsigns.nvim", -- use to display line change on the left of line numbers
 
-  -- DAP
-  { "mfussenegger/nvim-dap", event = "VeryLazy" },
-  { "theHamsta/nvim-dap-virtual-text", event = "VeryLazy" },
-  { "rcarriga/nvim-dap-ui", event = "VeryLazy" },
-  { "mfussenegger/nvim-dap-python", event = "VeryLazy" },
-  { "leoluz/nvim-dap-go", event = "VeryLazy" },
+  -- Debug Adapter Protocol
+  {
+    "mfussenegger/nvim-dap",
+    dependencies = {
+      "theHamsta/nvim-dap-virtual-text",
+      "rcarriga/nvim-dap-ui",
+    },
+    config = function()
+      require("nvim-dap-virtual-text").setup({})
+    end,
+  },
+  {
+    "rcarriga/nvim-dap-ui",
+    config = function()
+      require("user.dap.ui")
+    end,
+  },
+  {
+    "mfussenegger/nvim-dap-python",
+    ft = "python",
+    config = function()
+      require("user.dap.python")
+    end,
+  },
+  {
+    "leoluz/nvim-dap-go",
+    ft = "go",
+    config = function()
+      require("user.dap.go")
+    end,
+  },
 
   -- Refactor
   "ThePrimeagen/refactoring.nvim",
 }
-local opts = {}
+local opts = {
+  defaults = {
+    lazy = true, -- should plugins be lazy-loaded?
+  },
+  lockfile = vim.fn.stdpath("config") .. "/lazy-lock.json",
+}
 
 require("lazy").setup(plugins, opts)
