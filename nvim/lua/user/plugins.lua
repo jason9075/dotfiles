@@ -92,6 +92,10 @@ local plugins = {
       require("nvim-rooter").setup()
     end,
   },
+  {
+    "christoomey/vim-tmux-navigator",
+    lazy = false,
+  },
 
   -- LSP
   {

@@ -71,7 +71,7 @@ bindkey -M vicmd 'j' history-substring-search-down
 # }}} End configuration added by Zim install
 
 # key to accept zsh autosuggest
-bindkey '^l' autosuggest-accept
+bindkey '^g' autosuggest-accept
 
 # ZSH vi mode escape
 export ZVM_VI_INSERT_ESCAPE_BINDKEY=kj
@@ -163,3 +163,4 @@ export PATH="$PATH:$HOME/Android/Sdk/emulator"
 
 alias vpnon='sudo wg-quick up wg0'
 alias vpnoff='sudo wg-quick down wg0'
+
