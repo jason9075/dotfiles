@@ -1,15 +1,9 @@
-local status_ok, gps = pcall(require, "nvim-gps")
-if not status_ok then
-  return
-end
+local icons = require("user.icons")
 
-local icons = require "user.icons"
-
+local gps = require("nvim-gps")
 -- Customized config
-gps.setup {
-
+gps.setup({
   disable_icons = false, -- Setting it to true will disable all icons
-
   icons = {
     ["class-name"] = icons.kind.Class .. " ", -- Classes and class-like objects
     ["function-name"] = icons.kind.Function .. " ", -- Functions
@@ -33,7 +27,6 @@ gps.setup {
     ["time-name"] = icons.misc.Watch .. " ",
     ["module-name"] = icons.kind.Module .. " ",
   },
-
   -- Add custom configuration per language or
   -- Disable the plugin for a language
   -- Any language not disabled here is enabled by default
@@ -76,13 +69,11 @@ gps.setup {
   -- },
 
   separator = " " .. icons.ui.ChevronRight .. " ",
-
   -- limit for amount of context shown
   -- 0 means no limit
   -- Note: to make use of depth feature properly, make sure your separator isn't something that can appear
   -- in context names (eg: function names, class names, etc)
   depth = 0,
-
   -- indicator used when context is hits depth limit
   depth_limit_indicator = "..",
-}
+})
