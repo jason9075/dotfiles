@@ -65,6 +65,14 @@ keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
 keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
+-- Custom tmux navigation --
+vim.g.tmux_navigator_no_mappings = 1
+keymap("n", "<C-h>", "<cmd>TmuxNavigateLeft<CR>", opts)
+keymap("n", "<C-j>", "<cmd>TmuxNavigateDown<CR>", opts)
+keymap("n", "<C-k>", "<cmd>TmuxNavigateUp<CR>", opts)
+keymap("n", "<C-l>", "<cmd>TmuxNavigateRight<CR>", opts)
+-- keymap("n", "<C-\\>", "<cmd>TmuxNavigatePrevious<CR>", opts)
+
 -- NeoTree
 keymap("n", "<leader>e", "<cmd>NeoTreeRevealToggle<CR>", opts)
 
