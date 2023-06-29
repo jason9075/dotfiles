@@ -17,7 +17,7 @@ vim.opt.splitbelow = true -- force all horizontal splits to go below current win
 vim.opt.splitright = true -- force all vertical splits to go to the right of current window
 vim.opt.swapfile = false -- creates a swapfile
 vim.opt.termguicolors = true -- set term gui colors (most terminals support this)
-vim.opt.timeoutlen = 1000 -- time to wait for a mapped sequence to complete (in milliseconds)
+vim.opt.timeoutlen = 300 -- time to wait for a mapped sequence to complete (in milliseconds) ex: kj to escape
 vim.opt.undofile = true -- enable persistent undo
 vim.opt.updatetime = 300 -- faster completion (4000ms default)
 vim.opt.writebackup = false -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
@@ -31,7 +31,7 @@ vim.opt.relativenumber = true -- set relative numbered lines
 vim.opt.numberwidth = 4 -- set number column width to 2 {default 4}
 vim.opt.signcolumn = "yes" -- always show the sign column, otherwise it would shift the text each time
 vim.opt.wrap = false -- display lines as one long line
-vim.opt.scrolloff = 3 -- is one of my fav
+vim.opt.scrolloff = 15
 vim.opt.sidescrolloff = 8
 
 vim.opt.shortmess:append("c")
