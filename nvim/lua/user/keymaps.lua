@@ -33,9 +33,16 @@ keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 -- Navigate buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
+-- Move screen up and down
+keymap("n", "<S-k>", "<C-y>", opts)
+keymap("n", "<S-j>", "<C-e>", opts)
+
+-- Move textline up and down
+keymap("n", "<A-j>", ":m .+1<CR>", opts)
+keymap("n", "<A-k>", ":m .-2<CR>", opts)
 
 -- Insert --
--- Press jk fast to exit
+-- Press kj fast to exit
 keymap("i", "kj", "<ESC>", opts)
 
 keymap("i", "<C-g>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
@@ -45,14 +52,14 @@ keymap("i", "<C-g>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
 --keymap("v", "<", "<gv", opts)
 --keymap("v", ">", ">gv", opts)
 
--- Move text up and down
+-- Move textline up and down
 keymap("v", "<A-j>", ":m .+1<CR>==", opts)
 keymap("v", "<A-k>", ":m .-2<CR>==", opts)
 -- Paste without loss register
 keymap("v", "p", '"_dP', opts)
 
 -- Visual Block --
--- Move text up and down
+-- Move textline up and down
 keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
