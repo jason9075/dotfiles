@@ -121,10 +121,13 @@ alias ssh='kitty +kitten ssh'
 alias icat='kitty +kitten icat'
 alias vim='nvim'
 alias lg='lazygit'
+# Vim Grep
 # ref: https://news.ycombinator.com/item?id=31010090
-alias rfb="rg . --line-number --no-heading --color=always --colors 'match:fg:white' --colors 'match:style:nobold' --smart-case \"\$@\" | \
+# ref: https://www.mankier.com/1/fzf#Key/Event_Bindings
+alias vg="rg . --line-number --no-heading --color=always --colors 'match:fg:white' --colors 'match:style:nobold' --smart-case \"\$@\" | \
     fzf --reverse -d ':' -n 3.. --ansi --preview-window 'right:45%' \
-    --preview 'bat --style=numbers --color=always --highlight-line {2} {1}'"
+    --preview 'bat --style=numbers --color=always --highlight-line {2} {1}' \
+    --bind 'enter:become(nvim {1}:{2})'"
 
 # config
 alias cfz='vim ~/.zshrc && source ~/.zshrc'
