@@ -1,5 +1,12 @@
 # Dotfiles
 
+## Chezmoi Setup
+
+```bash
+export GITHUB_USERNAME=jason9075
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply $GITHUB_USERNAME
+```
+
 ## Linux Install
 
 ```
