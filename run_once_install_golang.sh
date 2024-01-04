@@ -1,4 +1,4 @@
-echo 'installing golang'
+#!/bin/bash
 
 if type go &> /dev/null; then
   echo 'golang has been installed, skip installation.'
@@ -8,4 +8,3 @@ fi
 # ref: https://github.com/canha/golang-tools-install-script
 curl -L https://git.io/vQhTU | bash
 
-echo 'golang is installed!'

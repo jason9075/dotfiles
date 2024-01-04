@@ -1,8 +1,9 @@
 "" Basic:
 let mapleader = " "
 imap kj <Esc>
+xnoremap p "_dP
 
-set clipboard+=unnamed
+set clipboard^=unnamed,unnamedplus
 set relativenumber
 set number
 set hlsearch

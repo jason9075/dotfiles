@@ -1,34 +1,78 @@
 ---
 - hosts: localhost
   become: yes
+  vars:
+    zsh_path: /usr/bin/zsh  # default
   tasks:
-    - name: Install NeoVim in MacOS
+
+    - name: Install Software in MacOS
       when: ansible_os_family == "Darwin"
       homebrew:
-        name: neovim
+        name: 
+          - git
+          - neovim
+          - zsh
+          - node
+          - fontconfig
+          - fd
+          - bat
+          - tree
+          - htop
+          - ripgrep
+          - tig
+          - tmux
+          - fzf
+          - black
+          - flake8
         state: present
 
-    - name: Install Software in Raspbian
-      when: ansible_os_family == "Debian"
+    # - name: Install Software in Arch Linux
+    #   when: ansible_distribution == "Archlinux"
+    #   pacman:
+    #     name: neovim
+    #     state: present
+
+    - name: Install Basic Software in Ubuntu
+      when: ansible_distribution == "Ubuntu"
       apt:
-        name: snapd
+        name: 
+          - git
+          - unzip
+          - zsh
+          - nodejs
+          - npm
+          - fuse
+          - xclip
+          - fontconfig
+          - fd-find
+          - bat
+          - tree
+          - htop
+          - ripgrep
+          - tig
+          - tmux
+          - fzf
+          - grc
+          - black
+          - flake8
         state: present
-        update_cache: yes
-    - name: Install 
-      when: ansible_os_family == "Debian"
-      command: snap install nvim --classic
 
-    - name: 安裝 Neovim 在 Arch Linux
-      when: ansible_distribution == "Archlinux"
-      pacman:
-        name: neovim
-        state: present
-
-    - name: 安裝 Neovim 在 Ubuntu
+    - name: Install NeoVim in Ubuntu
       when: ansible_distribution == "Ubuntu"
       shell: |
         curl -L "https://github.com/neovim/neovim/releases/latest/download/nvim.appimage" -o "${HOME}/.local/bin/nvim"
         chmod u+x "${HOME}/.local/bin/nvim"
       args:
         creates: "${HOME}/.local/bin/nvim"
-      become_user: "{{ ansible_env.USER }}"
+      become: no
+
+    #    Zsh    #
+    - name: set Zsh path to /usr/local/bin/zsh if it's macOS 
+      set_fact:
+        zsh_path: /usr/local/bin/zsh
+      when: ansible_os_family == "Darwin"
+        
+    - name: Change to Zsh
+      user:
+        name: "{{ lookup('ansible.builtin.env', 'USER') }}"
+        shell: "{{ zsh_path }}"

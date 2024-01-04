@@ -4,15 +4,7 @@
 
 ```bash
 export GITHUB_USERNAME=jason9075
-sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply $GITHUB_USERNAME
-```
-
-## Linux Install
-
-```
-sudo apt install git -y 
-git clone https://github.com/jason9075/dotfiles.git ~/dotfiles
-~/dotfiles/setup.sh
+sh -c "$(curl -fsLS get.chezmoi.io/lb)" -- init --apply $GITHUB_USERNAME
 ```
 
 ## OS shortcut
@@ -51,7 +43,5 @@ sudo passwd <username>
 ## Ref
 
 ```
-https://github.com/jonz94/dotfiles
-
-https://github.com/LunarVim/LunarVim
+https://github.com/logandonley/dotfiles/tree/main
 ```
