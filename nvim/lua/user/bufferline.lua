@@ -44,8 +44,8 @@ bufferline.setup({
       bg = { attribute = "bg", highlight = "TabLine" },
     },
     buffer_selected = {
-      fg = { attribute = "fg", highlight = "#ff0000" },
-      bg = { attribute = "bg", highlight = "#0000ff" },
+      fg = { attribute = "fg", highlight = "Normal" },
+      bg = { attribute = "bg", highlight = "Normal" },
     },
     buffer_visible = {
       fg = { attribute = "fg", highlight = "TabLine" },
