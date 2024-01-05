@@ -7,10 +7,6 @@
       import_tasks: darwin.yml
       when: ansible_os_family == "Darwin"
 
-    - name: Run Arch Linux
-      import_tasks: arch.yml
-      when: ansible_facts['distribution'] == "Archlinux"
-
     - name: Run Ubuntu
       import_tasks: ubuntu.yml
       when: ansible_facts['distribution'] == "Ubuntu"
@@ -23,7 +19,11 @@
       import_tasks: alpine.yml
       when: ansible_facts['distribution'] == "Alpine"
 
-    # Have some bug... it will be recognitize as Arch !?
-    # - name: Run Amazon Linux
-    #   import_tasks: amazon-linux.yml
-    #   when: ansible_facts['distribution'] == "Amazon"
+    - name: Run Amazon Linux
+      import_tasks: amazon-linux.yml
+      when: ansible_facts['distribution'] == "Amazon"
+
+    # Have some bug... other OS will be recognitize as Arch !?
+    # - name: Run Arch Linux
+    #   import_tasks: arch.yml
+    #   when: ansible_facts['distribution'] == "Archlinux"
