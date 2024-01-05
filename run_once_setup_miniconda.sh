@@ -10,11 +10,11 @@ CPU_ARCH=$(uname -m)
 
 if [ "$(uname)" = "Linux" ]; then
   curl -sL "https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-${CPU_ARCH}.sh" -o ~/Miniconda_Install.sh
-if [ "$(uname)" = "Darwin" ]; then
+elif [ "$(uname)" = "Darwin" ]; then
   curl -sL "https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-${CPU_ARCH}.sh" -o ~/Miniconda_Install.sh
 else
   echo "Unknown OS"
-  exit 1
+  exit 0
 fi
 
 chmod u+x ~/Miniconda_Install.sh
