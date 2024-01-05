@@ -1,0 +1,29 @@
+---
+- name: Basic softwares
+  dnf:
+    name:
+      - git
+      - unzip
+      - zsh
+      - nodejs
+      - npm
+      - fuse
+      - fontconfig
+      - tree
+      - htop
+      - tig
+      - tmux
+    state: present
+
+- name: NeoVim
+  shell: |
+    curl -L "https://github.com/neovim/neovim/releases/latest/download/nvim.appimage" -o "${HOME}/.local/bin/nvim"
+    chmod u+x "${HOME}/.local/bin/nvim"
+  args:
+    creates: '${HOME}/.local/bin/nvim'
+  become: no
+
+- name: Switch to Zsh
+  user:
+    name: '{{ ansible_env.USER }}'
+    shell: /usr/bin/zsh

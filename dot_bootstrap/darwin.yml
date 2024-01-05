@@ -1,0 +1,24 @@
+---
+- name: Install Basic Software
+  homebrew:
+    name:
+      - git
+      - neovim
+      - zsh
+      - node
+      - fontconfig
+      - fd
+      - bat
+      - tree
+      - htop
+      - ripgrep
+      - tig
+      - tmux
+      - black
+      - flake8
+    state: present
+
+- name: Change to Zsh
+  user:
+    name: "{{ lookup('ansible.builtin.env', 'USER') }}"
+    shell: /usr/local/bin/zsh

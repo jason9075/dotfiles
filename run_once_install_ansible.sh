@@ -5,21 +5,29 @@ install_on_fedora() {
 }
 
 install_on_ubuntu() {
-    sudo apt-get update
-    sudo apt-get install -y ansible
+    sudo apt update
+    sudo apt install -y ansible
 }
 
 install_on_mac() {
     brew install ansible
 }
 
-install_on_raspbian() {
-    sudo apt-get update
-    sudo apt-get install -y ansible
+install_on_debian() {
+    sudo apt update
+    sudo apt install -y ansible
 }
 
 install_on_arch() {
     sudo pacman -S ansible
+}
+
+install_on_alpine() {
+    sudo apk add ansible
+}
+
+install_on_amazon_linux() {
+    sudo yum install -y ansible
 }
 
 OS="$(uname -s)"
@@ -30,9 +38,13 @@ case "${OS}" in
         elif [ -f /etc/lsb-release ]; then
             install_on_ubuntu
         elif [ -f /etc/debian_version ]; then
-            install_on_raspbian
+            install_on_debian
         elif [ -f /etc/arch-release ]; then
             install_on_arch
+        elif [ -f /etc/alpine-release ]; then
+            install_on_alpine
+        elif [ -f /etc/amazon-linux-release ]; then
+            install_on_amazon_linux
         else
             echo "Unsupported Linux distribution"
             exit 1

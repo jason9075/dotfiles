@@ -1,0 +1,36 @@
+---
+- name: Install Basic Software
+  apt:
+    name:
+      - git
+      - unzip
+      - zsh
+      - nodejs
+      - npm
+      - fuse
+      - xclip
+      - fontconfig
+      - fd-find
+      - bat
+      - tree
+      - htop
+      - ripgrep
+      - tig
+      - tmux
+      - grc
+      - black
+      - flake8
+    state: present
+
+- name: Install NeoVim
+  shell: |
+    curl -L "https://github.com/neovim/neovim/releases/latest/download/nvim.appimage" -o "${HOME}/.local/bin/nvim"
+    chmod u+x "${HOME}/.local/bin/nvim"
+  args:
+    creates: '${HOME}/.local/bin/nvim'
+  become: no
+
+- name: Change to Zsh
+  user:
+    name: "{{ lookup('ansible.builtin.env', 'USER') }}"
+    shell: /usr/bin/zsh

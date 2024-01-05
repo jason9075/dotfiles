@@ -4,7 +4,16 @@
 
 ```bash
 export GITHUB_USERNAME=jason9075
+cd ~
 sh -c "$(curl -fsLS get.chezmoi.io/lb)" -- init --apply $GITHUB_USERNAME
+```
+
+Dev setup
+
+```bash
+sh -c "$(curl -fsLS get.chezmoi.io/lb)"
+.local/bin/chezmoi init https://github.com/jason9075/dotfiles.git --branch dev
+.local/bin/chezmoi apply
 ```
 
 ## OS shortcut
@@ -12,6 +21,7 @@ sh -c "$(curl -fsLS get.chezmoi.io/lb)" -- init --apply $GITHUB_USERNAME
 ### PopOS
 
 Shortcut fot change workspace:
+
 ```
 dconf write /org/gnome/mutter/dynamic-workspaces false
 dconf write /org/gnome/desktop/wm/preferences/num-workspaces 4
@@ -31,11 +41,13 @@ You can change it to use command + number.
 ## Misc
 
 If you want to change default bash to zsh, use:
+
 ```
 chsh -s $(which zsh)
 ```
 
 If you need to set user password, use:
+
 ```
 sudo passwd <username>
 ```

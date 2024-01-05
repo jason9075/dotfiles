@@ -1,78 +1,29 @@
 ---
-- hosts: localhost
+- name: OS setup
   become: yes
-  vars:
-    zsh_path: /usr/bin/zsh  # default
+  hosts: localhost
   tasks:
-
-    - name: Install Software in MacOS
+    - name: Run MacOS
+      import_tasks: darwin.yml
       when: ansible_os_family == "Darwin"
-      homebrew:
-        name: 
-          - git
-          - neovim
-          - zsh
-          - node
-          - fontconfig
-          - fd
-          - bat
-          - tree
-          - htop
-          - ripgrep
-          - tig
-          - tmux
-          - fzf
-          - black
-          - flake8
-        state: present
 
-    # - name: Install Software in Arch Linux
-    #   when: ansible_distribution == "Archlinux"
-    #   pacman:
-    #     name: neovim
-    #     state: present
+    - name: Run Arch Linux
+      import_tasks: arch.yml
+      when: ansible_facts['distribution'] == "Archlinux"
 
-    - name: Install Basic Software in Ubuntu
-      when: ansible_distribution == "Ubuntu"
-      apt:
-        name: 
-          - git
-          - unzip
-          - zsh
-          - nodejs
-          - npm
-          - fuse
-          - xclip
-          - fontconfig
-          - fd-find
-          - bat
-          - tree
-          - htop
-          - ripgrep
-          - tig
-          - tmux
-          - fzf
-          - grc
-          - black
-          - flake8
-        state: present
+    - name: Run Ubuntu
+      import_tasks: ubuntu.yml
+      when: ansible_facts['distribution'] == "Ubuntu"
 
-    - name: Install NeoVim in Ubuntu
-      when: ansible_distribution == "Ubuntu"
-      shell: |
-        curl -L "https://github.com/neovim/neovim/releases/latest/download/nvim.appimage" -o "${HOME}/.local/bin/nvim"
-        chmod u+x "${HOME}/.local/bin/nvim"
-      args:
-        creates: "${HOME}/.local/bin/nvim"
-      become: no
+    - name: Run Debian
+      import_tasks: debian.yml
+      when: ansible_facts['distribution'] == "Debian"
 
-    #    Zsh    #
-    - name: set Zsh path to /usr/local/bin/zsh if it's macOS 
-      set_fact:
-        zsh_path: /usr/local/bin/zsh
-      when: ansible_os_family == "Darwin"
-        
-    - name: Change to Zsh
-      user:
-        name: "{{ lookup('ansible.builtin.env', 'USER') }}"
-        shell: "{{ zsh_path }}"
+    - name: Run Alpine
+      import_tasks: alpine.yml
+      when: ansible_facts['distribution'] == "Alpine"
+
+    # Have some bug... it will be recognitize as Arch !?
+    # - name: Run Amazon Linux
+    #   import_tasks: amazon-linux.yml
+    #   when: ansible_facts['distribution'] == "Amazon"

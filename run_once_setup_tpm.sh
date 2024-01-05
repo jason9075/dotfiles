@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ -d ~/.tmux/plugins/tpm ]; then
+if [! -d ~/.tmux/plugins/tpm ]; then
   echo 'TPM has been installed, skip installation.'
   exit 0
 fi

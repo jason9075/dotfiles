@@ -1,4 +1,1 @@
-# Nvim
-nvim/plugin/**
-nvim/lazy-lock.json 
-nvim/spell/**
+.local/**

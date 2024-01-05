@@ -1,0 +1,36 @@
+---
+- name: Alpine Linux
+  apk:
+    name:
+      - git
+      - unzip
+      - zsh
+      - nodejs
+      - npm
+      - fuse
+      - xclip
+      - fontconfig
+      - fd
+      - bat
+      - tree
+      - htop
+      - ripgrep
+      - tig
+      - tmux
+      - grc
+      - py3-black
+      - py3-flake8
+    state: present
+
+- name: NeoVim
+  shell: |
+    curl -L "https://github.com/neovim/neovim/releases/latest/download/nvim.appimage" -o "/usr/local/bin/nvim"
+    chmod u+x "/usr/local/bin/nvim"
+  args:
+    creates: '/usr/local/bin/nvim'
+  become: yes
+
+- name: Switch to Zsh
+  user:
+    name: '{{ ansible_env.USER }}'
+    shell: /bin/zsh

@@ -7,6 +7,11 @@ if ! type fzf &> /dev/null; then
 fi
 
 if [ "$(uname)" = "Linux" ]; then
-  ln -s $(which fdfind) ~/.local/bin/fd
-  ln -s /usr/bin/batcat ~/.local/bin/bat
+  # check symbolic link
+  if [ ! -e ~/.local/bin/fd ]; then
+    ln -s $(which fdfind) ~/.local/bin/fd
+  fi
+  if [ ! -e ~/.local/bin/bat ]; then
+    ln -s $(which batcat) ~/.local/bin/bat
+  fi
 fi

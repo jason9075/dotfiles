@@ -41,7 +41,8 @@ local plugins = {
         opts = {},
         lazy = false,
     },
-    "SmiteshP/nvim-gps", -- show status line
+    "SmiteshP/nvim-navic", -- show status line
+
     "akinsho/bufferline.nvim",
     {
         "famiu/bufdelete.nvim",

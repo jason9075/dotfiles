@@ -1,0 +1,40 @@
+---
+- name: Key init
+  command: pacman-key --init
+
+- name: Add key
+  command: pacman-key --populate archlinux
+
+- name: Update Pacman
+  pacman:
+  update_cache: yes
+
+- name: Install Basic Software
+  pacman:
+    name:
+      - gcc
+      - git
+      - neovim
+      - unzip
+      - zsh
+      - nodejs
+      - npm
+      - fuse
+      - xclip
+      - fontconfig
+      - fd
+      - bat
+      - tree
+      - htop
+      - ripgrep
+      - tig
+      - tmux
+      - grc
+      - python-black
+      - flake8
+    state: present
+
+- name: Change to Zsh
+  user:
+    name: "{{ lookup('ansible.builtin.env', 'USER') }}"
+    shell: /usr/bin/zsh
