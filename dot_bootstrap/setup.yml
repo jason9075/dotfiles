@@ -4,31 +4,25 @@
   hosts: localhost
   tasks:
     - name: Run MacOS
-      import_tasks:
-        file: darwin.yml
+      include_tasks: darwin.yml
       when: ansible_os_family == "Darwin"
 
     - name: Run Ubuntu
-      import_tasks:
-        file: ubuntu.yml
+      include_tasks: ubuntu.yml
       when: ansible_facts['distribution'] == "Ubuntu"
 
     - name: Run Debian
-      import_tasks:
-        file: debian.yml
+      include_tasks: debian.yml
       when: ansible_facts['distribution'] == "Debian"
 
     - name: Run Alpine
-      import_tasks:
-        file: alpine.yml
+      include_tasks: alpine.yml
       when: ansible_facts['distribution'] == "Alpine"
 
     - name: Run Amazon Linux
-      import_tasks:
-        file: amazon-linux.yml
+      include_tasks: amazon-linux.yml
       when: ansible_facts['distribution'] == "Amazon"
 
-    # Have some bug... other OS will be recognitize as Arch !?
-    # - name: Run Arch Linux
-    #   import_tasks: arch.yml
-    #   when: ansible_facts['distribution'] == "Archlinux"
+    - name: Run Arch Linux
+      include_tasks: arch.yml
+      when: ansible_facts['distribution'] == "Archlinux"
