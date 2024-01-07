@@ -17,6 +17,7 @@
       - black
       - flake8
     state: present
+  become: no
 
 - name: Change to Zsh
   user:
