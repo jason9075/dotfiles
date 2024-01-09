@@ -4,4 +4,5 @@ LICENSE
 # Nvim 
 .config/nvim/lazy-lock.json
 .config/nvim/*.md
+.config/docs/**
 
