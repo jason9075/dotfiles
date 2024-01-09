@@ -5,7 +5,7 @@
 ```bash
 export GITHUB_USERNAME=jason9075
 cd ~
-sh -c "$(curl -fsLS get.chezmoi.io/lb)" -- init --apply git@github.com:$GITHUB_USERNAME/dotfiles.git
+sh -c "$(curl -fsLS get.chezmoi.io/lb)" -- init --apply $GITHUB_USERNAME
 ```
 
 Dev setup
