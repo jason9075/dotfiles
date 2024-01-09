@@ -6,7 +6,7 @@ if type lazygit &> /dev/null; then
 fi
 
 # if this is raspberry, ignore insatll
-if type cat /proc/device-tree/model | grep -q "Raspberry Pi"; then
+if cat /proc/device-tree/model | grep -q "Raspberry Pi"; then
   echo 'This is Raspberry Pi, skip installation.'
   exit 0
 fi
