@@ -22,13 +22,33 @@
       - flake8
     state: present
 
-- name: Install NeoVim
+- name: Check /proc/device-tree/model for Raspberry Pi
+  command: cat /proc/device-tree/model
+  register: pi_model
+  ignore_errors: yes
+
+- name: Determine if the host is a Raspberry Pi
+  set_fact:
+    is_raspberry_pi: >
+      {{ ansible_architecture == 'armv7l' or ansible_architecture == 'aarch64'
+      and 'Raspberry Pi' in pi_model.stdout }}
+
+- name: Install snap tool in Raspberry
+  community.general.snap:
+    name:
+      - nvim
+      - lazygit-gm
+    classic: yes
+  when: is_raspberry_pi
+
+- name: Install NeoVim in Debian
   shell: |
     curl -L "https://github.com/neovim/neovim/releases/latest/download/nvim.appimage" -o "${HOME}/.local/bin/nvim"
     chmod u+x "${HOME}/.local/bin/nvim"
   args:
     creates: '${HOME}/.local/bin/nvim'
   become: no
+  when: not is_raspberry_pi
 
 - name: Change to Zsh
   user:

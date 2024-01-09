@@ -10,6 +10,7 @@
           - 'Dotfiles Ver: {{ info.version }}'
           - 'OS Family: {{ ansible_os_family }}'
           - 'Distribution: {{ ansible_distribution }}'
+          - 'Arch: {{ ansible_architecture }}'
 
     # OS
     - name: Run MacOS
