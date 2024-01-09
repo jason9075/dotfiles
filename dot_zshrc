@@ -121,6 +121,7 @@ alias ssh='kitty +kitten ssh'
 alias icat='kitty +kitten icat'
 alias vim='nvim'
 alias lg='lazygit'
+alias cm='chezmoi'
 # Vim Grep
 # ref: https://news.ycombinator.com/item?id=31010090
 # ref: https://www.mankier.com/1/fzf#Key/Event_Bindings

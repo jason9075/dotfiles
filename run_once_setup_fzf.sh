@@ -1,10 +1,13 @@
 #!/bin/bash
 
 # fzf
-if ! type fzf &> /dev/null; then
-  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-  ~/.fzf/install --key-bindings --completion --no-bash --no-zsh --no-fish
+if type fzf &> /dev/null; then
+  echo 'fzf has been installed, skip installation.'
+  exit 0
 fi
+
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install --key-bindings --completion --no-bash --no-zsh --no-fish
 
 if [ "$(uname)" = "Linux" ]; then
   # check symbolic link

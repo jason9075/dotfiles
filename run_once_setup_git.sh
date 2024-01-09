@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# check git name and email
+if git config --global user.name &> /dev/null; then
+  echo 'git has been configured, skip configuration.'
+  exit 0
+fi
+
 GIT_NAME=${GIT_NAME:-"jason9075"}
 GIT_MAIL=${GIT_MAIL:-"jason9075@users.noreply.github.com"}
 

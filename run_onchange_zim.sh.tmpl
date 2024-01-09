@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# .bootstrap/setup.yml hash: {{ include "dot_zimrc" | sha256sum }}
+
+echo "Updating Zsh plugins..."
+zsh $HOME/.zim/zimfw.zsh install

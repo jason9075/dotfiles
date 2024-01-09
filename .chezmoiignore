@@ -1,2 +1,6 @@
 README.md
 LICENSE
+
+# Nvim 
+dot_config/nvim/lazy-lock.json
+dot_config/nvim/*.md

@@ -22,7 +22,5 @@ zmodule zsh-users/zsh-history-substring-search
 zmodule jeffreytse/zsh-vi-mode 
 
 # use powerlevel10k as prompt
-if [ $(uname -r | grep -v -i ish) ]; then
-  zmodule romkatv/powerlevel10k --use degit
-fi
+zmodule romkatv/powerlevel10k --use degit
 
