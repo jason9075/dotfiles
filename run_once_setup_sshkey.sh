@@ -1,12 +1,10 @@
 #!/bin/bash
 
-read -p "Do you want to copy ansible-jasonkuan public ssh key to this device? (Y/n) " -n 1 -r
+read -p "Do you want to setup ssh key to this device? (y/N) " yn
 
-if [[ $REPLY =~ ^[Nn]$ ]]
-then
-    exit 0
+if [[ ! $yn =~ ^[Yy]$ ]]; then
+  exit 0
 fi
 
-echo "Copying ssh key..."
 ansible-playbook ~/.bootstrap/ssh_key.yml --ask-vault-pass
 

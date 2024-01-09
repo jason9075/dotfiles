@@ -8,10 +8,46 @@
         name: key
       no_log: true
 
-    - name: Copy SSH public key
+    - name: Ensure .ssh directory exists
+      file:
+        path: '~/.ssh'
+        state: directory
+        mode: 0700
+
+    - name: Prompt to put SSH key in authorized_keys
+      pause:
+        prompt: 'Add ansible-jasonkuan.pub in authorized_keys? (y/N)'
+      register: put_auth_key
+
+    - name: Add SSH key in authorized_keys
       lineinfile:
         path: '~/.ssh/authorized_keys'
         line: '{{ key.ssh_public_key }}'
         state: present
         create: yes
         mode: '0600'
+      when: put_auth_key.user_input | lower in ['yes', 'y']
+
+    - name: Prompt to write Public SSH key in .ssh/
+      pause:
+        prompt: 'Write "Public" in .ssh/ansible-jasonkuan.pub ? (y/N)'
+      register: write_public_key
+
+    - name: Write Private SSH Key in .ssh/
+      copy:
+        content: '{{ key.ssh_public_key }}'
+        dest: '~/.ssh/ansible-jasonkuan.pub'
+        mode: 0600
+      when: write_public_key.user_input | lower in ['yes', 'y']
+
+    - name: Prompt to write Private SSH key in .ssh/
+      pause:
+        prompt: 'Write "Private" key in .ssh/ansible-jasonkuan ? (y/N)'
+      register: write_private_key
+
+    - name: Write Private SSH Key in .ssh/
+      copy:
+        content: '{{ key.ssh_private_key }}'
+        dest: '~/.ssh/ansible-jasonkuan'
+        mode: 0600
+      when: write_private_key.user_input | lower in ['yes', 'y']
