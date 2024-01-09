@@ -14,10 +14,6 @@ bindkey -v
 # Remove path separator from WORDCHARS.
 WORDCHARS=${WORDCHARS//[\/]}
 
-# Set a custom path for the completion dump file.
-# If none is provided, the default ${ZDOTDIR:-${HOME}}/.zcompdump is used.
-#zstyle ':zim:completion' dumpfile "${ZDOTDIR:-${HOME}}/.zcompdump-${ZSH_VERSION}"
-
 # Customize the style that the suggestions are shown with.
 # See https://github.com/zsh-users/zsh-autosuggestions/blob/master/README.md#suggestion-highlight-style
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
@@ -25,14 +21,8 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
 # Set what highlighters will be used.
 # See https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters.md
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern regexp)
-# Customize the main highlighter styles.
-# See https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters/main.md#how-to-tweak-it
-# typeset -A ZSH_HIGHLIGHT_STYLES
-# ZSH_HIGHLIGHT_STYLES[comment]='fg=242'
 
-# ------------------
 # Initialize modules
-# ------------------
 
 if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
   # Download zimfw script if missing.
@@ -49,9 +39,7 @@ if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
 fi
 source ${ZIM_HOME}/init.zsh
 
-# ------------------------------
 # Post-init module configuration
-# ------------------------------
 
 # Bind ^[[A/^[[B manually so up/down works both before and after zle-line-init
 bindkey '^[[A' history-substring-search-up
@@ -131,9 +119,9 @@ alias vg="rg . --line-number --no-heading --color=always --colors 'match:fg:whit
     --bind 'enter:become(nvim {1}:{2})'"
 
 # config
-alias cfz='vim ~/.zshrc && source ~/.zshrc'
-alias cfv='vim ~/.config/nvim/lua/user/plugins.lua'
-alias cfk='vim ~/.config/kitty/kitty.conf'
+alias cfz='cm edit ~/.zshrc'
+alias cfv='cm edit ~/.config/nvim/lua/user/plugins.lua'
+alias cfk='cm edit ~/.config/kitty/kitty.conf'
 
 # tmux
 alias tn='tmux new -s' # Start a new session and give a name
