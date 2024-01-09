@@ -1,0 +1,17 @@
+---
+- name: Copy SSH Pub Key
+  hosts: localhost
+  tasks:
+    - name: Include vaulted SSH key yaml
+      include_vars:
+        file: group_vars/key.yml
+        name: key
+      no_log: true
+
+    - name: Copy SSH public key
+      lineinfile:
+        path: '~/.ssh/authorized_keys'
+        line: '{{ key.ssh_public_key }}'
+        state: present
+        create: yes
+        mode: '0600'

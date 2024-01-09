@@ -7,7 +7,7 @@
       - zsh
       - nodejs
       - npm
-      - fuse
+      # - fuse
       - xclip
       - fontconfig
       - fd-find
@@ -18,8 +18,8 @@
       - tig
       - tmux
       - grc
-      - black
-      - flake8
+      # - black
+      # - flake8
     state: present
 
 - name: Install NeoVim in Ubuntu

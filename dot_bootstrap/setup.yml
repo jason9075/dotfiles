@@ -1,15 +1,24 @@
 ---
-- name: OS setup
+- name: Ansible setup
   become: yes
+  gather_facts: yes
   hosts: localhost
   tasks:
+    - name: Print info message
+      debug:
+        msg:
+          - 'Dotfiles Ver: {{ info.version }}'
+          - 'OS Family: {{ ansible_os_family }}'
+          - 'Distribution: {{ ansible_distribution }}'
+
+    # OS
     - name: Run MacOS
       include_tasks: darwin.yml
       when: ansible_os_family == "Darwin"
 
     - name: Run Ubuntu
       include_tasks: ubuntu.yml
-      when: ansible_facts['distribution'] == "Ubuntu"
+      when: ansible_facts['distribution'] == "Ubuntu" or ansible_facts['distribution'] == "Pop!_OS"
 
     - name: Run Debian
       include_tasks: debian.yml

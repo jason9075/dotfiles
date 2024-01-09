@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ -x "$(command -v ansible)" ]; then
+    echo "Ansible is already installed."
+    exit 0
+fi
+
 install_on_fedora() {
     sudo dnf install -y ansible
 }
@@ -58,7 +63,6 @@ case "${OS}" in
         exit 1
         ;;
 esac
-
 
 ansible-playbook ~/.bootstrap/setup.yml --ask-become-pass
 

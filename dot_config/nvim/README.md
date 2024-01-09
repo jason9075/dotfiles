@@ -1,22 +1,84 @@
-# My NeoVim Setup
+# My NeoVim Keybindings
 
-Install
+這份文檔提供了設定於 Vim 中的自定義快捷鍵的詳細描述。
 
-```
-git clone https://github.com/jason9075/nvim $HOME/.config/nvim
-```
-Then, use vim to open $HOME/.config/lua/user/plugin.lua then save file. It will install all plugins.
+## 基本設定
 
-## Linux dependency
-```
-sudo npm install -g tree-sitter-cli 
-```
+- 空格鍵被映射為 leader key。
+- 啟用了靜音模式以減少打擾。
 
-Others
+## Normal 模式
 
-lazygit (require go 1.18 above)
-```
-git clone https://github.com/jesseduffield/lazygit.git
-cd lazygit
-go install
-```
+### 窗口導航
+
+- `<C-h>`: 移動到左邊的窗口。
+- `<C-j>`: 移動到下面的窗口。
+- `<C-k>`: 移動到上面的窗口。
+- `<C-l>`: 移動到右邊的窗口。
+
+### 調整窗口大小
+
+- `<C-Up>`: 增加窗口高度。
+- `<C-Down>`: 減少窗口高度。
+- `<C-Left>`: 減少窗口寬度。
+- `<C-Right>`: 增加窗口寬度。
+
+### 緩衝區導航
+
+- `<S-l>`: 移至下一緩衝區。
+- `<S-h>`: 移至上一緩衝區。
+
+### 屏幕上下滾動
+
+- `<S-k>`: 向上滾動屏幕。
+- `<S-j>`: 向下滾動屏幕。
+
+### 移動文本行
+
+- `<A-j>`: 向下移動當前行。
+- `<A-k>`: 向上移動當前行。
+
+## Insert 模式
+
+- `kj`: 快速按鍵組合退出插入模式。
+
+## Visual 模式
+
+### 移動文本行
+
+- `<A-j>`: 向下移動選擇的文本。
+- `<A-k>`: 向上移動選擇的文本。
+
+### 粘貼
+
+- `p`: 粘貼並保留原有剪貼板內容。
+
+## Visual Block 模式
+
+### 移動文本行
+
+- `J`: 向下移動選擇的文本塊。
+- `K`: 向上移動選擇的文本塊。
+- `<A-j>`: 同上。
+- `<A-k>`: 同上。
+
+## Terminal 模式
+
+### 改善的終端機導航
+
+- `<C-h>`: 移動到左邊的終端機窗口。
+- `<C-j>`: 移動到下面的終端機窗口。
+- `<C-k>`: 移動到上面的終端機窗口。
+- `<C-l>`: 移動到右邊的終端機窗口。
+
+## 自定義 Tmux 導航
+
+- `<C-h>`: 移動到 Tmux 的左窗格。
+- `<C-j>`: 移動到 Tmux 的下窗格。
+- `<C-k>`: 移動到 Tmux 的上窗格。
+- `<C-l>`: 移動到 Tmux 的右窗格。
+
+## 其他功能
+
+- `<leader>e`: 切換 NeoTree 文件瀏覽器。
+- `<leader><leader>f` 和其他相關快捷鍵: 激活 Hop 快速跳轉功能。
