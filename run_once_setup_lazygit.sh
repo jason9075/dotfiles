@@ -5,13 +5,10 @@ if type lazygit &> /dev/null; then
   exit 0
 fi
 
-# if this is rasbian, ignore insatll
-if [ -f /etc/os-release ]; then
-  . /etc/os-release
-  if [ "$ID" = "raspbian" ]; then
-    echo 'raspbian detected, skip installation.'
-    exit 0
-  fi
+# if this is raspberry, ignore insatll
+if type cat /proc/device-tree/model | grep -q "Raspberry Pi"; then
+  echo 'This is Raspberry Pi, skip installation.'
+  exit 0
 fi
 
 "$HOME/.go/bin/go" install github.com/jesseduffield/lazygit@latest
