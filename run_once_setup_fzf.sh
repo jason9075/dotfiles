@@ -2,7 +2,7 @@
 
 # fzf
 if type fzf &> /dev/null; then
-  echo 'fzf has been installed, skip installation.'
+  echo '\033[1;30mfzf has been installed, skip installation.\033[0m'
   exit 0
 fi
 

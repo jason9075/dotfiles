@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if [ -d ~/.tmux/plugins/tpm ]; then
-  echo 'TPM has been installed, skip installation.'
+  echo '\033[1;30mTPM has been installed, skip installation.\033[1;30m'
   exit 0
 fi
 

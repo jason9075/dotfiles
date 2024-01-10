@@ -12,7 +12,7 @@
           - 'Distribution: {{ ansible_distribution }}'
           - 'Arch: {{ ansible_architecture }}'
 
-    # Select OS
+    # Select  OS
     - name: Run MacOS
       include_tasks: darwin.yml
       when: ansible_os_family == "Darwin"

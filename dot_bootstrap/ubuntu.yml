@@ -23,15 +23,25 @@
       # - flake8
     state: present
 
-- name: Install NeoVim in Ubuntu
-  shell: |
-    curl -L "https://github.com/neovim/neovim/releases/latest/download/nvim.appimage" -o "${HOME}/.local/bin/nvim"
-    chmod u+x "${HOME}/.local/bin/nvim"
-  args:
-    creates: '${HOME}/.local/bin/nvim'
+- name: Check if NeoVim AppImage exists
+  stat:
+    path: '${HOME}/.local/bin/nvim'
+  register: nvim_stat
   become: no
+
+- name: Install NeoVim in Ubuntu
+  get_url:
+    url: https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+    dest: '${HOME}/.local/bin/nvim'
+    mode: 'u+x'
+  become: no
+  when: not nvim_stat.stat.exists
 
 - name: Change to Zsh
   user:
     name: "{{ lookup('ansible.builtin.env', 'USER') }}"
     shell: /usr/bin/zsh
+
+- name: Install git-delta
+  apt:
+    deb: https://github.com/dandavison/delta/releases/download/0.16.5/git-delta_0.16.5_amd64.deb

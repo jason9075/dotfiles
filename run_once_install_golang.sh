@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if type go &> /dev/null; then
-  echo 'golang has been installed, skip installation.'
+  echo '\033[1;30mGolang has been installed, skip installation.\033[0m'
   exit 0
 fi
 

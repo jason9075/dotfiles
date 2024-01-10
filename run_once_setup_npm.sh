@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if type tree-sitter &> /dev/null; then
-  echo 'npm plugins has been installed, skip installation.'
+  echo '\033[1;30mnpm plugins has been installed, skip installation.\033[0m'
   exit 0
 fi
 

@@ -2,7 +2,7 @@
 
 # check git name and email
 if git config --global user.name &> /dev/null; then
-  echo 'git has been configured, skip configuration.'
+  echo '\033[1;30mgit has been configured, skip configuration.\033[0m'
   exit 0
 fi
 
@@ -14,4 +14,10 @@ git config --global user.email ${GIT_MAIL}
 git config --global core.editor nvim
 git config --global init.defaultBranch master
 
-"$HOME/.go/bin/go" install github.com/jesseduffield/lazygit@latest
+# setup delta
+git config --global include.path ~/.config/delta/themes.gitconfig
+git config --global pager.diff delta
+git config --global pager.log delta
+git config --global pager.reflog delta
+git config --global pager.show delta
+

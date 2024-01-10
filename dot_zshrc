@@ -97,6 +97,11 @@ export FZF_CTRL_T_OPTS="--preview 'bat --color=always --line-range :50 {}'"
 export FZF_ALT_C_COMMAND='fd --type d . --color=never --hidden'
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -50'"
 
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+
+# Custom functions
+source ~/.config/zsh/func.zsh
+
 # alias
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   alias ls='ls --group-directories-first'
@@ -104,19 +109,13 @@ fi
 alias shutdown='sudo shutdown now'
 alias ls='ls -p --color=auto'
 alias ll='ls -al -h'
-alias git='LANG=en_GB git'
+alias gd='git diff'
+alias gs='git -c delta.side-by-side=true diff'
 alias ssh='kitty +kitten ssh'
 alias icat='kitty +kitten icat'
 alias v='nvim'
 alias lg='lazygit'
 alias cm='chezmoi'
-# Vim Grep
-# ref: https://news.ycombinator.com/item?id=31010090
-# ref: https://www.mankier.com/1/fzf#Key/Event_Bindings
-alias vg="rg . --line-number --no-heading --color=always --colors 'match:fg:white' --colors 'match:style:nobold' --smart-case \"\$@\" | \
-    fzf --reverse -d ':' -n 3.. --ansi --preview-window 'right:45%' \
-    --preview 'bat --style=numbers --color=always --highlight-line {2} {1}' \
-    --bind 'enter:become(nvim {1}:{2})'"
 
 # config
 alias cfz='cm edit ~/.zshrc --apply'

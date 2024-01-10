@@ -32,6 +32,7 @@
       - grc
       - python-black
       - flake8
+      - git-delta
     state: present
 
 - name: Change to Zsh

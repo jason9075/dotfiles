@@ -54,3 +54,7 @@
   user:
     name: "{{ lookup('ansible.builtin.env', 'USER') }}"
     shell: /usr/bin/zsh
+
+- name: Install git-delta
+  apt:
+    deb: https://github.com/dandavison/delta/releases/download/0.16.5/git-delta_0.16.5_amd64.deb

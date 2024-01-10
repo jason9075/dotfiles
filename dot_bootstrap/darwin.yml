@@ -16,6 +16,7 @@
       - tmux
       - black
       - flake8
+      - git-delta
     state: present
   become: no
 

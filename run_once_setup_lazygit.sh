@@ -1,13 +1,13 @@
 #!/bin/bash
 
 if type lazygit &> /dev/null; then
-  echo 'lazygit has been installed, skip installation.'
+  echo '\033[1;30mlazygit has been installed, skip installation.\033[0m'
   exit 0
 fi
 
 # if this is raspberry, ignore insatll
 if cat /proc/device-tree/model | grep -q "Raspberry Pi"; then
-  echo 'This is Raspberry Pi, skip installation.'
+  echo '\033[1;30mThis is Raspberry Pi, skip installation.\033[0m'
   exit 0
 fi
 

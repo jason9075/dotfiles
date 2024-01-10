@@ -1,16 +1,10 @@
 " Plugin type ":PlugInstall" to install
 call plug#begin()
-Plug 'junegunn/vim-easy-align'
-Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'airblade/vim-rooter'
-Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug '~/my-prototype-plugin'
 call plug#end()
 
 " Check if the plugin directory is empty
@@ -74,6 +68,7 @@ nnoremap <S-j> <C-e>
 nnoremap <S-k> <C-y>
 
 nnoremap <leader>ff :Files<CR>
+nnoremap <leader>fg :RG<CR>
 
 " Autocomplete
 autocmd BufWritePost ~/.local/share/chezmoi/* ! chezmoi apply --source-path "%"

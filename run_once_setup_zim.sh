@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if [ -d ~/.zim ]; then
-  echo 'zim has been installed, skip installation.'
+  echo '\033[1;30mZim has been installed, skip installation.\033[1;30m'
   exit 0
 fi
 
