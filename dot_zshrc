@@ -107,7 +107,7 @@ alias ll='ls -al -h'
 alias git='LANG=en_GB git'
 alias ssh='kitty +kitten ssh'
 alias icat='kitty +kitten icat'
-alias vim='nvim'
+alias v='nvim'
 alias lg='lazygit'
 alias cm='chezmoi'
 # Vim Grep
@@ -119,9 +119,9 @@ alias vg="rg . --line-number --no-heading --color=always --colors 'match:fg:whit
     --bind 'enter:become(nvim {1}:{2})'"
 
 # config
-alias cfz='cm edit ~/.zshrc'
-alias cfv='cm edit ~/.config/nvim/lua/user/plugins.lua'
-alias cfk='cm edit ~/.config/kitty/kitty.conf'
+alias cfz='cm edit ~/.zshrc --apply'
+alias cfv='cm edit ~/.config/nvim/lua/user/plugins.lua --apply'
+alias cfk='cm edit ~/.config/kitty/kitty.conf --apply'
 
 # tmux
 alias tn='tmux new -s' # Start a new session and give a name

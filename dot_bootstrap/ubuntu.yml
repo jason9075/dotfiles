@@ -18,6 +18,7 @@
       - tig
       - tmux
       - grc
+      - vim
       # - black
       # - flake8
     state: present
