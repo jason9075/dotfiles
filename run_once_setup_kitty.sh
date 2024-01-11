@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if type kitty &> /dev/null; then
-  echo '\033[1;30mkitty has been installed, skip installation.\033[0m'
+  echo '\033[1;30mkitty has been installed, skip installation.\033[1;30m'
   exit 0
 fi
 

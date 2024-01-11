@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ -x "$(command -v ansible)" ]; then
-    echo "\033[1;30mAnsible is already installed.\033[0m"
+    echo "\033[1;30mAnsible is already installed.\033[1;30m"
     exit 0
 fi
 

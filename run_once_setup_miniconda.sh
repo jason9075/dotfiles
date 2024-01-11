@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ -d "$HOME/miniconda3" ]; then
-  echo '\033[1;30mminiconda has been installed, skip installation.\033[0m'
+  echo '\033[1;30mminiconda has been installed, skip installation.\033[1;30m'
   exit 0
 fi
 
@@ -13,7 +13,7 @@ if [ "$(uname)" = "Linux" ]; then
 elif [ "$(uname)" = "Darwin" ]; then
   curl -sL "https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-${CPU_ARCH}.sh" -o ~/Miniconda_Install.sh
 else
-  echo "\033[1;31mUnknown OS, exit.\033[0m"
+  echo "\033[1;31mUnknown OS, exit.\033[1;30m"
   exit 0
 fi
 
