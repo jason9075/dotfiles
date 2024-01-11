@@ -16,13 +16,29 @@ sh -c "$(curl -fsLS get.chezmoi.io/lb)"
 .local/bin/chezmoi apply
 ```
 
+Apply your workspace setting to Chezmoi space
+```bash
+chezmoi re-add
+```
+
+Apply Chezmoi space to your workspace
+```bash
+chezmoi apply
+```
+
+Pull latest Chezmoi from repo and apply to workspace
+```bash
+chezmoi update
+```
+
+
 ## OS shortcut
 
 ### PopOS
 
 Shortcut fot change workspace:
 
-```
+```bash
 dconf write /org/gnome/mutter/dynamic-workspaces false
 dconf write /org/gnome/desktop/wm/preferences/num-workspaces 4
 
@@ -42,13 +58,13 @@ You can change it to use command + number.
 
 If you want to change default bash to zsh, use:
 
-```
+```bash
 chsh -s $(which zsh)
 ```
 
 If you need to set user password, use:
 
-```
+```bash
 sudo passwd <username>
 ```
 
