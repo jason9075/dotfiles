@@ -55,6 +55,12 @@
     name: "{{ lookup('ansible.builtin.env', 'USER') }}"
     shell: /usr/bin/zsh
 
-- name: Install git-delta
+- name: Install git-delta on Arm
+  apt:
+    deb: https://github.com/dandavison/delta/releases/download/0.16.5/git-delta_0.16.5_arm64.deb
+  when: is_raspberry_pi
+
+- name: Install git-delta on x86
   apt:
     deb: https://github.com/dandavison/delta/releases/download/0.16.5/git-delta_0.16.5_amd64.deb
+  when: not is_raspberry_pi
