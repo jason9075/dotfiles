@@ -1,36 +1,13 @@
-# Git History Code Browser
+# Git Code History Browser
+# Search a lost file or code if you remember some keywords
 # $1 is the file name, optional
-ghc(){
-  if [ -z "$1" ]; then
-    ghc-all
-  else
-    ghc-file "$1"
-  fi 
-
-}
-ghc-all(){
-  git log --pretty=format:'%h' | \
-  while read -r commit; do
-      git show "$commit" --format="%b" | rg "^[\+\-]" | sed "s/^/$commit /"
-  done | \
-  fzf --ansi \
-      --no-sort \
-      --preview-window 'right:60%' \
-      --preview "echo {} | cut -d' ' -f1 | xargs -I % git show % --color=always | delta" \
-      --bind 'alt-n:preview-down,alt-p:preview-up,alt-s:toggle-sort' \
-      --bind "enter:execute(echo {} | cut -d' ' -f1 | xargs -I % git show % | delta -s)"
-}
 # don't know why, using pipe delta in single file may cause some problem, so I use tput cols to get the width of the terminal
-ghc-file(){
+gch(){
   local file=$1
-  if [ ! -f "$file" ]; then
-    echo "File "$file" not found!"
-    return 1
-  fi
 
-  git log --pretty=format:'%h' -- $file | \
-  while read -r commit; do
-      git show "$commit" --format="%b" $file | rg "^[\+\-]" | sed "s/^/$commit /"
+  git log --pretty=format:'%h' -- "$file" | \
+  while IFS= read -r commit || [ -n "$commit" ]; do
+      git show "$commit" --format="%H" -- $file | rg '^\+[^+]|^-[^-]' | rg -v '^\+\+\+|^\-\-\-' | sed "s/^/$commit /"
   done | \
   fzf --ansi \
       --no-sort \
@@ -83,7 +60,7 @@ gstash() {
 
 # Git Commit Browser
 # https://gist.github.com/junegunn/f4fca918e937e6bf5bad
-fshow() {
+gcb() {
   git log --graph --color=always \
       --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
   fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
