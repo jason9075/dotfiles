@@ -81,4 +81,3 @@
 ## 其他功能
 
 - `<leader>e`: 切換 NeoTree 文件瀏覽器。
-- `<leader><leader>f` 和其他相關快捷鍵: 激活 Hop 快速跳轉功能。

@@ -82,15 +82,3 @@ keymap("n", "<C-l>", "<cmd>TmuxNavigateRight<CR>", opts)
 
 -- NeoTree
 keymap("n", "<leader>e", "<cmd>NeoTreeRevealToggle<CR>", opts)
-
--- Hop
-keymap("n", "<leader><leader>f", "<cmd>HopChar1<CR>", opts)
-keymap("n", "<leader><leader>F", "<cmd>HopChar2<CR>", opts)
-keymap("n", "<leader><leader>w", "<cmd>HopWordAC<CR>", opts)
-keymap("n", "<leader><leader>b", "<cmd>HopWordBC<CR>", opts)
-keymap("n", "<leader><leader>s", "<cmd>HopPattern<CR>", opts)
-keymap("v", "<leader><leader>f", "<cmd>HopChar1<CR>", opts)
-keymap("v", "<leader><leader>F", "<cmd>HopChar2<CR>", opts)
-keymap("v", "<leader><leader>w", "<cmd>HopWordAC<CR>", opts)
-keymap("v", "<leader><leader>b", "<cmd>HopWordBC<CR>", opts)
-keymap("v", "<leader><leader>s", "<cmd>HopPattern<CR>", opts)
