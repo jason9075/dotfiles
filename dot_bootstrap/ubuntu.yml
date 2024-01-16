@@ -19,6 +19,7 @@
       - tmux
       - grc
       - vim
+      - zoxide
       # - black
       # - flake8
     state: present
@@ -45,3 +46,10 @@
 - name: Install git-delta
   apt:
     deb: https://github.com/dandavison/delta/releases/download/0.16.5/git-delta_0.16.5_amd64.deb
+
+- name: Install Zoxide
+  shell: 'curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash'
+  become: no
+
+- name: Install eza
+  include_tasks: eza.yml

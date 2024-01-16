@@ -4,7 +4,9 @@
 # don't know why, using pipe delta in single file may cause some problem, so I use tput cols to get the width of the terminal
 gch(){
   local file=$1
-
+  # check file is empty string or not, if it is empty use dot instead
+  file=${file:-.}
+  
   git log --pretty=format:'%h' -- "$file" | \
   while IFS= read -r commit || [ -n "$commit" ]; do
       git show "$commit" --format="%H" -- $file | rg '^\+[^+]|^-[^-]' | rg -v '^\+\+\+|^\-\-\-' | sed "s/^/$commit /"

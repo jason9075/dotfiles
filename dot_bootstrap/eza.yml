@@ -1,0 +1,42 @@
+---
+- name: Check if GPG key is already installed
+  stat:
+    path: /etc/apt/keyrings/gierens.gpg
+  register: key_installed
+
+- name: Ensure directory exists for GPG key and sources.list
+  file:
+    path: '{{ item }}'
+    state: directory
+  with_items:
+    - /etc/apt/keyrings
+    - /etc/apt/sources.list.d
+
+- name: Download and install GPG key for eza repository
+  shell: 'wget -qO- https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | sudo gpg --dearmor -o /etc/apt/keyrings/gierens.gpg'
+  when: not key_installed.stat.exists
+
+- name: Add eza repository to sources.list
+  lineinfile:
+    path: /etc/apt/sources.list.d/gierens.list
+    line: 'deb [signed-by=/etc/apt/keyrings/gierens.gpg] http://deb.gierens.de stable main'
+  when: not key_installed.stat.exists
+
+- name: Set permissions for GPG key and sources.list file
+  file:
+    path: '{{ item }}'
+    mode: '0644'
+  with_items:
+    - /etc/apt/keyrings/gierens.gpg
+    - /etc/apt/sources.list.d/gierens.list
+  when: not key_installed.stat.exists
+
+- name: Update apt package cache
+  apt:
+    update_cache: yes
+
+- name: Install eza
+  apt:
+    name:
+      - eza
+    state: present

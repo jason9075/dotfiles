@@ -99,13 +99,21 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 # Custom functions
 source ~/.config/zsh/func.zsh
 
+# Zoxide
+eval "$(zoxide init zsh)"
+
 # alias
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   alias ls='ls --group-directories-first'
 fi
+if type eza &> /dev/null ; then
+  alias ls='eza'
+  alias tree='eza -T'
+else
+  alias ls='ls -p --color=auto'
+fi
+alias ll='ls -alh'
 alias shutdown='sudo shutdown now'
-alias ls='ls -p --color=auto'
-alias ll='ls -al -h'
 alias gd='git diff'
 alias gs='git -c delta.side-by-side=true diff'
 alias ssh='kitty +kitten ssh'

@@ -17,6 +17,8 @@
       - black
       - flake8
       - git-delta
+      - zoxide
+      - eza
     state: present
   become: no
 

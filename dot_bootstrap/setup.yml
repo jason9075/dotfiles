@@ -15,24 +15,48 @@
     # Select  OS
     - name: Run MacOS
       include_tasks: darwin.yml
+      register: os_done
       when: ansible_os_family == "Darwin"
 
     - name: Run Ubuntu
       include_tasks: ubuntu.yml
+      register: os_done
       when: ansible_facts['distribution'] == "Ubuntu" or ansible_facts['distribution'] == "Pop!_OS"
 
     - name: Run Debian
       include_tasks: debian.yml
+      register: os_done
       when: ansible_facts['distribution'] == "Debian"
 
     - name: Run Alpine
       include_tasks: alpine.yml
+      register: os_done
       when: ansible_facts['distribution'] == "Alpine"
 
     - name: Run Amazon Linux
       include_tasks: amazon-linux.yml
+      register: os_done
       when: ansible_facts['distribution'] == "Amazon"
 
     - name: Run Arch Linux
       include_tasks: arch.yml
+      register: os_done
       when: ansible_facts['distribution'] == "Archlinux"
+
+    # Install entr
+    - name: Clone entr repository
+      git:
+        repo: https://github.com/eradman/entr.git
+        dest: /tmp/entr
+      register: git_clone_done
+      when: os_done
+
+    - name: Build and install entr
+      command: '{{ item }}'
+      args:
+        chdir: /tmp/entr
+      with_items:
+        - './configure'
+        - 'make test'
+        - 'make install'
+      when: git_clone_done.changed

@@ -33,6 +33,7 @@
       - python-black
       - flake8
       - git-delta
+      - eza
     state: present
 
 - name: Change to Zsh
