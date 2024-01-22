@@ -17,42 +17,22 @@ sh -c "$(curl -fsLS get.chezmoi.io/lb)"
 ```
 
 Apply your workspace setting to Chezmoi space
+
 ```bash
 chezmoi re-add
 ```
 
 Apply Chezmoi space to your workspace
+
 ```bash
 chezmoi apply
 ```
 
 Pull latest Chezmoi from repo and apply to workspace
+
 ```bash
 chezmoi update
 ```
-
-
-## OS shortcut
-
-### PopOS
-
-Shortcut fot change workspace:
-
-```bash
-dconf write /org/gnome/mutter/dynamic-workspaces false
-dconf write /org/gnome/desktop/wm/preferences/num-workspaces 4
-
-dconf write /org/gnome/desktop/wm/keybindings/switch-to-workspace-1 "['<Alt>1']"
-dconf write /org/gnome/desktop/wm/keybindings/switch-to-workspace-2 "['<Alt>2']"
-dconf write /org/gnome/desktop/wm/keybindings/switch-to-workspace-3 "['<Alt>3']"
-dconf write /org/gnome/desktop/wm/keybindings/switch-to-workspace-4 "['<Alt>4']"
-```
-
-### Mac OS
-
-Go to keyboard setting and choose missing control. Default setting is ctrl + number.
-
-You can change it to use command + number.
 
 ## Misc
 

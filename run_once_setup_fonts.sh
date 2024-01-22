@@ -7,9 +7,8 @@ if fc-list | grep "Hack Regular Nerd Font" &> /dev/null; then
   exit 0
 fi
 
-git clone --filter=blob:none --sparse https://github.com/ryanoasis/nerd-fonts.git ~/nerd-fonts
-cd ~/nerd-fonts
+git clone --filter=blob:none --sparse https://github.com/ryanoasis/nerd-fonts.git /tmp/nerd-fonts
+cd /tmp/nerd-fonts
 git sparse-checkout add patched-fonts/Hack
 ./install.sh Hack
-cd ~/
-rm -rf ~/nerd-fonts
+cd -

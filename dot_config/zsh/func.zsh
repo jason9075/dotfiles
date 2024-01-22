@@ -33,8 +33,8 @@ vg() {
     --smart-case "$@" | \
       fzf --reverse -d ':' -n 3.. \
         --ansi \
-        --preview-window 'right:45%' \
-        --preview 'bat --style=numbers --color=always --highlight-line {2} {1}' \
+        --preview-window 'right:55%' \
+        --preview 'fzf-bat-preview {1} {2}' \
         --bind 'alt-n:preview-down,alt-p:preview-up,alt-s:toggle-sort' \
         --bind 'enter:become(nvim {1}:{2})'
 }

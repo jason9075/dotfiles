@@ -19,6 +19,8 @@
       - git-delta
       - zoxide
       - eza
+      - jq
+      - yq
     state: present
   become: no
 

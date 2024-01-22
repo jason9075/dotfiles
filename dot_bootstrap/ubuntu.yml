@@ -20,6 +20,8 @@
       - grc
       - vim
       - zoxide
+      - jq
+      - yq
       # - black
       # - flake8
     state: present
