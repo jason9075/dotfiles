@@ -21,6 +21,7 @@
       - black
       - flake8
       - zoxide
+      - snapd
     state: present
 
 - name: Check /proc/device-tree/model for Raspberry Pi
