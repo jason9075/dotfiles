@@ -1,11 +1,33 @@
 local gitsigns = require("gitsigns")
+local icons = require("user.icons")
+
 gitsigns.setup({
   signs = {
-    add = { hl = "GitSignsAdd", text = "▎", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
-    change = { hl = "GitSignsChange", text = "▎", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
-    delete = { hl = "GitSignsDelete", text = "契", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
-    topdelete = { hl = "GitSignsDelete", text = "契", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
-    changedelete = { hl = "GitSignsChange", text = "▎", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
+    add = { hl = "GitSignsAdd", text = icons.git.SignAdd, numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
+    change = {
+      hl = "GitSignsChange",
+      text = icons.git.SignChange,
+      numhl = "GitSignsChangeNr",
+      linehl = "GitSignsChangeLn",
+    },
+    delete = {
+      hl = "GitSignsDelete",
+      text = icons.git.SignDelete,
+      numhl = "GitSignsDeleteNr",
+      linehl = "GitSignsDeleteLn",
+    },
+    topdelete = {
+      hl = "GitSignsDelete",
+      text = icons.git.SignTopDelete,
+      numhl = "GitSignsDeleteNr",
+      linehl = "GitSignsDeleteLn",
+    },
+    changedelete = {
+      hl = "GitSignsChange",
+      text = icons.git.SignChangeDelete,
+      numhl = "GitSignsChangeNr",
+      linehl = "GitSignsChangeLn",
+    },
   },
   signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
   numhl = false, -- Toggle with `:Gitsigns toggle_numhl`

@@ -1,4 +1,5 @@
 local bufferline = require("bufferline")
+local icons = require("user.icons")
 
 bufferline.setup({
   options = {
@@ -11,10 +12,10 @@ bufferline.setup({
     -- and so changing this is NOT recommended, this is intended
     -- as an escape hatch for people who cannot bear it for whatever reason
     indicator = { style = "underline", icon = "▎" },
-    buffer_close_icon = "",
+    buffer_close_icon = icons.ui.Close,
     -- buffer_close_icon = '',
-    modified_icon = "●",
-    close_icon = "",
+    modified_icon = icons.ui.Circle,
+    close_icon = icons.ui.Close,
     left_trunc_marker = "",
     right_trunc_marker = "",
     max_name_length = 30,

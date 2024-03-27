@@ -72,6 +72,11 @@ if vim.fn.has("mac") == 1 then
       Untracked = "U",
       Octoface = "",
       Branch = "",
+      SignAdd = "▎",
+      SignChange = "▎",
+      SignDelete = "契",
+      SignTopDelete = "契",
+      SignChangeDelete = "▎",
     },
     ui = {
       Lock = "",
@@ -183,6 +188,11 @@ else
       Untracked = "U",
       Octoface = "",
       Branch = "",
+      SignAdd = "",
+      SignChange = "",
+      SignDelete = "",
+      SignTopDelete = "",
+      SignChangeDelete = "",
     },
     ui = {
       Lock = " ",
