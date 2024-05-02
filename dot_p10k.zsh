@@ -45,7 +45,7 @@
   # last prompt line gets hidden if it would overlap with left prompt.
   typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
     status                  # exit code of the last command
-    # vcs                     # git status
+    vcs                     # git status
     # command_execution_time  # duration of the last command
     background_jobs         # presence of background jobs
     # direnv                  # direnv status (https://direnv.net/)
