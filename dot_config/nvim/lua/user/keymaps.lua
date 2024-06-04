@@ -34,8 +34,8 @@ keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 -- Move screen up and down
-keymap("n", "<S-k>", "<C-y>", opts)
-keymap("n", "<S-j>", "<C-e>", opts)
+keymap("n", "<S-k>", "5<C-y>", opts)
+keymap("n", "<S-j>", "5<C-e>", opts)
 
 -- Move textline up and down
 keymap("n", "<A-j>", ":m .+1<CR>", opts)
