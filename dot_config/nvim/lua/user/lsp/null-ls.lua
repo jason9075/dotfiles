@@ -21,9 +21,10 @@ null_ls.setup({
     formatting.black.with({ extra_args = { "--fast" } }),
     formatting.stylua.with({ extra_args = { "--indent-width", "2", "--indent-type", "Spaces" } }),
     formatting.clang_format.with({
+      filetypes = { "c", "cpp", "objc", "objcpp", "glsl" },
       extra_args = { "--style={BasedOnStyle: Google, ColumnLimit: 120}" },
     }),
-    diagnostics.flake8.with({ extra_args = { "--max-line-length", "120" } }),
+    require("none-ls.diagnostics.flake8").with({ extra_args = { "--max-line-length", "120" } }),
     diagnostics.staticcheck,
   },
   on_attach = function(client, bufnr)

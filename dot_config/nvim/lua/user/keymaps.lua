@@ -45,8 +45,6 @@ keymap("n", "<A-k>", ":m .-2<CR>", opts)
 -- Press kj fast to exit
 keymap("i", "kj", "<ESC>", opts)
 
-keymap("i", "<C-g>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
-
 -- Visual --
 -- Stay in indent mode
 --keymap("v", "<", "<gv", opts)

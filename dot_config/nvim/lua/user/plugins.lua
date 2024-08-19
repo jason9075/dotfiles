@@ -83,10 +83,6 @@ local plugins = {
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
-    init = function()
-      vim.o.timeout = true
-      vim.o.timeoutlen = 300
-    end,
   },
   { "wsdjeg/vim-fetch", lazy = false }, -- open file with specify line
   {
@@ -103,10 +99,43 @@ local plugins = {
 
   -- LSP
   {
-    "github/copilot.vim",
+    "zbirenbaum/copilot.lua",
     event = "VeryLazy",
     config = function()
-      vim.g.copilot_no_tab_map = true
+      require("copilot").setup({
+        panel = {
+          enabled = true,
+          auto_refresh = false,
+          keymap = {
+            jump_prev = "[[",
+            jump_next = "]]",
+            accept = "<C-g>",
+            refresh = "gr",
+            open = "<M-CR>",
+          },
+          layout = {
+            position = "bottom", -- | top | left | right
+            ratio = 0.4,
+          },
+        },
+        suggestion = {
+          enabled = true,
+          auto_trigger = true,
+          hide_during_completion = true,
+          debounce = 75,
+          keymap = {
+            accept = "<C-g>",
+            accept_word = false,
+            accept_line = false,
+            next = "<M-]>",
+            prev = "<M-[>",
+            dismiss = "<C-]>",
+          },
+        },
+        filetypes = {
+          ["."] = true,
+        },
+      })
     end,
   },
   {
@@ -137,7 +166,12 @@ local plugins = {
       { "rafamadriz/friendly-snippets" }, -- a bunch of snippets to use
 
       -- Linter and Formatters
-      { "jose-elias-alvarez/null-ls.nvim" },
+      {
+        "nvimtools/none-ls.nvim",
+        dependencies = {
+          "nvimtools/none-ls-extras.nvim",
+        },
+      },
       { "jayp0521/mason-null-ls.nvim" },
     },
   },

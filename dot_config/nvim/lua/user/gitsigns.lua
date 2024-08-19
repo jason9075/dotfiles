@@ -3,31 +3,11 @@ local icons = require("user.icons")
 
 gitsigns.setup({
   signs = {
-    add = { hl = "GitSignsAdd", text = icons.git.SignAdd, numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
-    change = {
-      hl = "GitSignsChange",
-      text = icons.git.SignChange,
-      numhl = "GitSignsChangeNr",
-      linehl = "GitSignsChangeLn",
-    },
-    delete = {
-      hl = "GitSignsDelete",
-      text = icons.git.SignDelete,
-      numhl = "GitSignsDeleteNr",
-      linehl = "GitSignsDeleteLn",
-    },
-    topdelete = {
-      hl = "GitSignsDelete",
-      text = icons.git.SignTopDelete,
-      numhl = "GitSignsDeleteNr",
-      linehl = "GitSignsDeleteLn",
-    },
-    changedelete = {
-      hl = "GitSignsChange",
-      text = icons.git.SignChangeDelete,
-      numhl = "GitSignsChangeNr",
-      linehl = "GitSignsChangeLn",
-    },
+    add = { text = icons.git.SignAdd },
+    change = { text = icons.git.SignChange },
+    delete = { text = icons.git.SignDelete },
+    topdelete = { text = icons.git.SignTopDelete },
+    changedelete = { text = icons.git.SignChangeDelete },
   },
   signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
   numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
@@ -45,9 +25,6 @@ gitsigns.setup({
     delay = 1000,
     ignore_whitespace = false,
   },
-  current_line_blame_formatter_opts = {
-    relative_time = false,
-  },
   sign_priority = 6,
   update_debounce = 100,
   status_formatter = nil, -- Use default
@@ -59,8 +36,5 @@ gitsigns.setup({
     relative = "cursor",
     row = 0,
     col = 1,
-  },
-  yadm = {
-    enable = false,
   },
 })

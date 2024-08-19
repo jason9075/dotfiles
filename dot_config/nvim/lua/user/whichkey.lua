@@ -1,6 +1,7 @@
-local which_key = require("which-key")
+local wk = require("which-key")
 
 local setup = {
+  preset = "helix",
   plugins = {
     marks = true, -- shows a list of your marks on ' and `
     registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
@@ -22,192 +23,126 @@ local setup = {
   },
   -- add operators that will trigger motion and text object completion
   -- to enable all native operators, set the preset / operators plugin above
-  operators = { gc = "Comments" },
-  key_labels = {
-    -- override the label used to display some keys. It doesn't effect WK in any other way.
-    -- For example:
-    --[[ ["<space>"] = "SPC", ]]
-    --[[ ["<CR>"] = "RET", ]]
-    --[[ ["<tab>"] = "TAB", ]]
-  },
   icons = {
     breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
     separator = "➜", -- symbol used between a key and it's label
     group = "+", -- symbol prepended to a group
-  },
-  popup_mappings = {
-    scroll_down = "<c-d>", -- binding to scroll down inside the popup
-    scroll_up = "<c-u>", -- binding to scroll up inside the popup
-  },
-  window = {
-    border = "rounded", -- none, single, double, shadow
-    position = "bottom", -- bottom, top
-    margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
-    padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
-    winblend = 0,
+    mappings = false, -- displays a list of mappings
   },
   layout = {
     height = { min = 4, max = 25 }, -- min and max height of the columns
-    width = { min = 20, max = 50 }, -- min and max width of the columns
+    -- width = { min = 25, max = 50 }, -- min and max width of the columns
     spacing = 4, -- spacing between columns
-    align = "left", -- align columns left, center or right
+    align = "center", -- align columns left, center or right
   },
-  ignore_missing = true, -- enable this to hide mappings for which you didn't specify a label
-  hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " }, -- hide mapping boilerplate
   show_help = true, -- show help message on the command line when the popup is visible
-  triggers = "auto", -- automatically setup triggers
-  -- triggers = {"<leader>"} -- or specify a list manually
-  triggers_nowait = {
-    -- marks
-    "`",
-    "'",
-    "g`",
-    "g'",
-    -- registers
-    '"',
-    "<c-r>",
-    -- spelling
-    "z=",
-  },
-  triggers_blacklist = {
-    -- list of mode / prefixes that should never be hooked by WhichKey
-    -- this is mostly relevant for key maps that start with a native binding
-    -- most people should not need to change this
-    i = { "j", "k" },
-    v = { "j", "k" },
-  },
-}
-
-local opts = {
-  mode = "n", -- NORMAL mode
-  prefix = "<leader>",
-  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-  silent = true, -- use `silent` when creating keymaps
-  noremap = true, -- use `noremap` when creating keymaps
-  nowait = true, -- use `nowait` when creating keymaps
 }
 
 local mappings = {
-  ["/"] = { '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', "Comment" },
-  ["e"] = { "<cmd>NeoTreeRevealToggle<CR>", "Explorer (NeoTree)" },
-  ["w"] = { "<cmd>w!<CR>", "Save" },
-  ["p"] = { "<cmd>Lazy<CR>", "Plugins" },
-  ["q"] = { "<cmd>lua require('user.utils.function').smart_quit()<CR>", "Quit" },
-  ["Q"] = { "<cmd>qa!<CR>", "Quit!" },
-  ["x"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
-  ["o"] = { "<cmd>BufferLineCloseOther<CR>", "Close Others" },
-  b = {
-    name = "Buffers",
-    j = { "<cmd>BufferLinePick<CR>", "Jump" },
-    f = { "<cmd>FzfLua buffers<CR>", "Find" },
-    p = { "<cmd>BufferLineCyclePrev<CR>", "Previous" },
-    n = { "<cmd>BufferLineCycleNext<CR>", "Next" },
-    c = {
-      "<cmd>BufferLinePickClose<CR>",
-      "Pick which buffer to close",
+  {
+    mode = "n",
+    { "<leader>/", "<cmd>lua require('Comment.api').toggle.linewise()<CR>", desc = "Comment" },
+    { "<leader>e", "<cmd>NeoTreeRevealToggle<CR>", desc = "Explorer (NeoTree)" },
+    { "<leader>w", "<cmd>w!<CR>", desc = "Save" },
+    { "<leader>p", "<cmd>Lazy<CR>", desc = "Plugins" },
+    { "<leader>q", "<cmd>lua require('user.utils.function').smart_quit()<CR>", desc = "Quit" },
+    { "<leader>Q", "<cmd>qa!<CR>", desc = "Quit!" },
+    { "<leader>x", "<cmd>Bdelete!<CR>", desc = "Close Buffer" },
+    { "<leader>n", "<cmd>Noice dismiss<CR>", desc = "Close Noice Message" },
+    { "<leader>o", "<cmd>BufferLineCloseOther<CR>", desc = "Close Others" },
+
+    { "<leader>b", group = "Buffers" },
+    { "<leader>bj", "<cmd>BufferLinePick<CR", desc = "Jump" },
+    { "<leader>bf", "<cmd>FzfLua buffers<CR>", desc = "Find" },
+    { "<leader>bp", "<cmd>BufferLineCyclePrev<CR>", desc = "Previous" },
+    { "<leader>bn", "<cmd>BufferLineCycleNext<CR>", desc = "Next" },
+    { "<leader>bc", "<cmd>BufferLinePickClose<CR>", desc = "Pick which buffer to close" },
+    { "<leader>bv", "<cmd>vs<CR>", desc = "Vertical Split" },
+    { "<leader>bo", "<cmd>BufferLineCloseOther<CR>", desc = "Close others" },
+    { "<leader>bD", "<cmd>BufferLineSortByDirectory<CR>", desc = "Sort by directory" },
+    { "<leader>bL", "<cmd>BufferLineSortByExtension<CR>", desc = "Sort by language" },
+
+    { "<leader>g", group = "Git" },
+    { "<leader>gj", "<cmd>lua require 'gitsigns'.next_hunk()<CR>", desc = "Next Hunk" },
+    { "<leader>gk", "<cmd>lua require 'gitsigns'.prev_hunk()<CR>", desc = "Prev Hunk" },
+    { "<leader>gl", "<cmd>lua require 'gitsigns'.blame_line()<CR>", desc = "Blame" },
+    { "<leader>gp", "<cmd>lua require 'gitsigns'.preview_hunk()<CR>", desc = "Preview Hunk" },
+    { "<leader>gr", "<cmd>lua require 'gitsigns'.reset_hunk()<CR>", desc = "Reset Hunk" },
+    { "<leader>gR", "<cmd>lua require 'gitsigns'.reset_buffer()<CR>", desc = "Reset Buffer" },
+    { "<leader>gs", "<cmd>FzfLua git_status<CR>", desc = "Statue" },
+    { "<leader>gb", "<cmd>FzfLua git_branches<CR>", desc = "Checkout branch" },
+    { "<leader>gc", "<cmd>FzfLua git_commits<CR>", desc = "Checkout commit" },
+    { "<leader>gd", "<cmd>Gitsigns diffthis HEAD<CR>", desc = "Diff" },
+
+    { "<leader>h", group = "Harpoon" },
+    { "<leader>ha", "<cmd>lua require('harpoon.mark').add_file<CR>", desc = "Add" },
+    { "<leader>hr", "<cmd>lua require('harpoon.mark').rm_file<CR>", desc = "Remove" },
+    { "<leader>hR", "<cmd>lua require('harpoon.mark').clear_all<CR>", desc = "Remove All" },
+    { "<leader>hm", "<cmd>lua require('harpoon.ui').toggle_quick_menu<CR>", desc = "Menu" },
+    { "<leader>hj", "<cmd>lua require('harpoon.ui').nav_next<CR>", desc = "Next Mark" },
+    { "<leader>hk", "<cmd>lua require('harpoon.ui').nav_prev<CR>", desc = "Previous Mark" },
+
+    { "<leader>l", group = "LSP" },
+    { "<leader>la", "<cmd>FzfLua lsp_code_actions<CR>", desc = "Code Action" },
+    { "<leader>li", "<cmd>LspInfo<CR>", desc = "Info" },
+    { "<leader>lI", "<cmd>Mason<CR>", desc = "Installer Info" },
+    { "<leader>lj", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", desc = "Next Diagnostic" },
+    { "<leader>lk", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", desc = "Prev Diagnostic" },
+    { "<leader>ll", "<cmd>lua vim.lsp.codelens.run()<CR>", desc = "CodeLens Action" },
+    { "<leader>lq", "<cmd>FzfLua qucikfix<CR>", desc = "Quickfix" },
+
+    { "<leader>r", group = "Refactor" },
+    { "<leader>rf", "<cmd>LspZeroFormat<CR>", desc = "Format" },
+    { "<leader>rr", "<cmd>lua vim.lsp.buf.rename()<CR>", desc = "Rename" },
+    { "<leader>ri", "<Cmd>lua require('refactoring').refactor('Inline Variable')<CR>", desc = "Inline Variable" },
+
+    { "<leader>f", group = "Find" },
+    { "<leader>fD", "<cmd>lua vim.lsp.buf.declaration()<CR>", desc = "Declaration" },
+    { "<leader>fd", "<cmd>lua vim.lsp.buf.definition()<CR>", desc = "Definition" },
+    { "<leader>fe", "<cmd>lua vim.diagnostic.goto_next()<CR>", desc = "Error" },
+    { "<leader>fr", "<cmd>FzfLua lsp_references<CR>", desc = "References" },
+    { "<leader>fi", "<cmd>FzfLua lsp_implementations<CR>", desc = "Implentations" },
+    { "<leader>ff", "<cmd>FzfLua files<CR>", desc = "Files" },
+    { "<leader>fn", "<cmd>Noice fzf<CR>", desc = "Notify" },
+    { "<leader>fg", "<cmd>FzfLua live_grep<CR>", desc = "Live Grep" },
+    { "<leader>fh", "<cmd>FzfLua help_tags<CR>", desc = "Help Tags" },
+    { "<leader>fk", "<cmd>FzfLua keymaps<CR>", desc = "Keymaps" },
+    { "<leader>fs", "<cmd>ClangdSwitchSourceHeader<CR>", desc = "Switch Source Header" },
+
+    { "<leader>s", group = "Show Info" },
+    { "<leader>sh", "<cmd>lua vim.lsp.buf.hover()<CR>", desc = "Hover" },
+    { "<leader>sl", "<cmd>lua vim.diagnostic.open_float()<CR>", desc = "Line Diagnostic" },
+
+    { "<leader>d", group = "Debug" },
+    { "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<CR>", desc = "Breakpoint" },
+    { "<leader>dc", "<cmd>lua require'dap'.continue()<CR>", desc = "Start/Continue" },
+    { "<leader>dC", "<cmd>lua require'dap'.run_to_cursor()<CR>", desc = "Run To Cursor" },
+    { "<leader>di", "<cmd>lua require'dap'.step_into()<CR>", desc = "Into" },
+    { "<leader>do", "<cmd>lua require'dap'.step_over()<CR>", desc = "Over" },
+    { "<leader>dO", "<cmd>lua require'dap'.step_out()<CR>", desc = "Out" },
+    { "<leader>dp", "<cmd>lua require'dap'.pause()<CR>", desc = "Pause" },
+    { "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<CR>", desc = "Repl" },
+    { "<leader>dl", "<cmd>lua require'dap'.run_last()<CR>", desc = "Last" },
+    { "<leader>dx", "<cmd>lua require'dap'.close()<CR>", desc = "Close" },
+    {
+      "<leader>dd",
+      "<cmd>lua require'dap'.disconnect()<CR><cmd>lua require'dap'.repl.close()<CR>",
+      desc = "Disconnect",
     },
-    v = { "<cmd>vs<CR>", "Vertical Split" },
-    o = { "<cmd>BufferLineCloseOther<CR>", "Close others" },
-    D = {
-      "<cmd>BufferLineSortByDirectory<CR>",
-      "Sort by directory",
+    { "<leader>du", "<cmd>lua require'dapui'.toggle()<CR>", desc = "UI" },
+  },
+  {
+    mode = "v",
+    { "<leader>r", group = "Refactor" },
+    { "<leader>rm", "<Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR>", desc = "Extract Method" },
+    {
+      "<leader>rv",
+      "<Esc><Cmd>lua require('refactoring').refactor('Extract Variable')<CR>",
+      desc = "Extract Variable",
     },
-    L = {
-      "<cmd>BufferLineSortByExtension<CR>",
-      "Sort by language",
-    },
-  },
-  g = {
-    name = "Git",
-    j = { "<cmd>lua require 'gitsigns'.next_hunk()<CR>", "Next Hunk" },
-    k = { "<cmd>lua require 'gitsigns'.prev_hunk()<CR>", "Prev Hunk" },
-    l = { "<cmd>lua require 'gitsigns'.blame_line()<CR>", "Blame" },
-    p = { "<cmd>lua require 'gitsigns'.preview_hunk()<CR>", "Preview Hunk" },
-    r = { "<cmd>lua require 'gitsigns'.reset_hunk()<CR>", "Reset Hunk" },
-    R = { "<cmd>lua require 'gitsigns'.reset_buffer()<CR>", "Reset Buffer" },
-    s = { "<cmd>lua require 'gitsigns'.stage_hunk()<CR>", "Stage Hunk" },
-    u = { "<cmd>lua require 'gitsigns'.undo_stage_hunk()<CR>", "Undo Stage Hunk" },
-    o = { "<cmd>FzfLua git_status<CR>", "Statue" },
-    b = { "<cmd>FzfLua git_branches<CR>", "Checkout branch" },
-    c = { "<cmd>FzfLua git_commits<CR>", "Checkout commit" },
-    d = { "<cmd>Gitsigns diffthis HEAD<CR>", "Diff" },
-  },
-  h = {
-    name = "Harpoon",
-    a = { "<cmd>lua require('harpoon.mark').add_file()<CR>", "Add" },
-    r = { "<cmd>lua require('harpoon.mark').rm_file()<CR>", "Remove" },
-    R = { "<cmd>lua require('harpoon.mark').clear_all()<CR>", "Remove All" },
-    m = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>", "Menu" },
-    j = { "<cmd>lua require('harpoon.ui').nav_next()<CR>", "Next Mark" },
-    k = { "<cmd>lua require('harpoon.ui').nav_prev()<CR>", "Previous Mark" },
-  },
-  l = {
-    name = "LSP",
-    a = { "<cmd>FzfLua lsp_code_actions<CR>", "Code Action" },
-    i = { "<cmd>LspInfo<CR>", "Info" },
-    I = { "<cmd>Mason<CR>", "Installer Info" },
-    j = { "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", "Next Diagnostic" },
-    k = { "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", "Prev Diagnostic" },
-    l = { "<cmd>lua vim.lsp.codelens.run()<CR>", "CodeLens Action" },
-    q = { "<cmd>FzfLua qucikfix<CR>", "Quickfix" },
-  },
-  r = {
-    name = "Refactor",
-    f = { "<cmd>LspZeroFormat<CR>", "Format" },
-    r = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
-    i = { "<Cmd>lua require('refactoring').refactor('Inline Variable')<CR>", "Inline Variable" },
-  },
-  f = {
-    name = "Find",
-    D = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "Declaration" },
-    d = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Definition" },
-    r = { "<cmd>FzfLua lsp_references<CR>", "References" },
-    i = { "<cmd>FzfLua lsp_implementations<CR>", "Implementations" },
-    f = { "<cmd>FzfLua files<CR>", "Files" },
-    g = { "<cmd>FzfLua live_grep<CR>", "Live Grep" },
-    h = { "<cmd>FzfLua help_tags<CR>", "Help Tags" },
-    k = { "<cmd>FzfLua keymaps<CR>", "Keymap" },
-  },
-  s = {
-    name = "Show Info",
-    h = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Hover" },
-    l = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Line Diagnostic" },
-  },
-  d = {
-    name = "Debug",
-    b = { "<cmd>lua require'dap'.toggle_breakpoint()<CR>", "Breakpoint" },
-    c = { "<cmd>lua require'dap'.continue()<CR>", "Start/Continue" },
-    C = { "<cmd>lua require'dap'.run_to_cursor()<CR>", "Run To Cursor" },
-    i = { "<cmd>lua require'dap'.step_into()<CR>", "Into" },
-    o = { "<cmd>lua require'dap'.step_over()<CR>", "Over" },
-    O = { "<cmd>lua require'dap'.step_out()<CR>", "Out" },
-    p = { "<cmd>lua require'dap'.pause()<CR>", "Pause" },
-    r = { "<cmd>lua require'dap'.repl.toggle()<CR>", "Repl" },
-    l = { "<cmd>lua require'dap'.run_last()<CR>", "Last" },
-    x = { "<cmd>lua require'dap'.close()<CR>", "Close" },
-    d = { "<cmd>lua require'dap'.disconnect()<CR><cmd>lua require'dap'.repl.close()<CR>", "Disconnect" },
-    u = { "<cmd>lua require'dapui'.toggle()<CR>", "UI" },
+    { "<leader>ri", "<Esc><Cmd>lua require('refactoring').refactor('Inline Variable')<CR>", desc = "Inline Variable" },
   },
 }
 
-local vopts = {
-  mode = "v", -- VISUAL mode
-  prefix = "<leader>",
-  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-  silent = true, -- use `silent` when creating keymaps
-  noremap = true, -- use `noremap` when creating keymaps
-  nowait = true, -- use `nowait` when creating keymaps
-}
-local vmappings = {
-  ["/"] = { '<ESC><CMD>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>', "Comment" },
-  r = {
-    name = "Refactor",
-    m = { "<Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR>", "Extract Method" },
-    v = { "<Esc><Cmd>lua require('refactoring').refactor('Extract Variable')<CR>", "Extract Variable" },
-    i = { "<Esc><Cmd>lua require('refactoring').refactor('Inline Variable')<CR>", "Inline Variable" },
-  },
-}
-
-which_key.setup(setup)
-which_key.register(mappings, opts)
-which_key.register(vmappings, vopts)
+wk.setup(setup)
+wk.add(mappings)
