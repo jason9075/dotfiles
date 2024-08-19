@@ -187,6 +187,7 @@ local plugins = {
   "nvim-treesitter/nvim-treesitter-textobjects",
 
   -- Git
+  { "tpope/vim-fugitive", cmd = { "G", "Git" } },
   "lewis6991/gitsigns.nvim", -- use to display line change on the left of line numbers
 
   -- Debug Adapter Protocol
