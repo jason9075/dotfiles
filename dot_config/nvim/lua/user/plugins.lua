@@ -156,7 +156,18 @@ local plugins = {
       { "hrsh7th/nvim-cmp" }, -- The completion plugin
       { "hrsh7th/cmp-buffer" }, -- buffer completions
       { "hrsh7th/cmp-path" }, -- path completions
-      { "saadparwaiz1/cmp_luasnip" }, -- snippet completions
+      {
+        "saadparwaiz1/cmp_luasnip",
+        config = function()
+          require("cmp").setup({
+            snippet = {
+              expand = function(args)
+                require("luasnip").lsp_expand(args.body)
+              end,
+            },
+          })
+        end,
+      }, -- snippet completions
       { "hrsh7th/cmp-nvim-lsp" },
       { "hrsh7th/cmp-nvim-lua" },
 
@@ -196,6 +207,7 @@ local plugins = {
     dependencies = {
       "theHamsta/nvim-dap-virtual-text",
       "rcarriga/nvim-dap-ui",
+      "nvim-neotest/nvim-nio",
     },
     config = function()
       require("nvim-dap-virtual-text").setup({})
