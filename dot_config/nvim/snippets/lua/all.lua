@@ -1,4 +1,5 @@
--- Ref: https://github.com/mireq/luasnip-snippets/tree/main
+--  for debugging, you can clear all snippets by running the following command in the nvim command line:
+-- require("luasnip.session.snippet_collection").clear_snippets("all")
 local ls = require("luasnip")
 local s = ls.snippet
 local sn = ls.snippet_node
@@ -28,37 +29,61 @@ local ms = ls.multi_snippet
 local k = require("luasnip.nodes.key_indexer").new_key
 
 ls.add_snippets("all", {
-  s(
-    { trig = "jason", descr = "Jason Kuan's test snippet." },
-    fmt("Line 1 {}\nLine 2 {}\nLine 3 {}\n", { i(1, "value1"), i(2, "value2"), i(3, "value3") })
-  ),
-  s(
-    { trig = "jasonrep", descr = "Jason Kuan's test repetition snippet." },
-    fmt("origin: {},  repeat: {}, repeat again: {}", { i(1, "value"), rep(1), rep(1) })
-  ),
+	s(
+		{ trig = "jason", descr = "Jason Kuan's test snippet." },
+		fmta(
+			[[
+			Line 1 <val1>
+            Line 2 <val2>
+            Line 3 <val3>
+            Repeat 2 <val_rep>
+            ]],
+			{
+				val1 = i(1, "value1"),
+				val2 = i(2, "value2"),
+				val3 = i(3, "value3"),
+				val_rep = rep(2),
+			}
+		)
+	),
+	s(
+		{ trig = "jasonchoice", descr = "Jason Kuan's test choice snippet." },
+		fmta(
+			[[
+        This is a choice snippet: <ch>
+        ]],
+			{ ch = c(1, { t("choice1"), t("choice2"), t("choice3") }) }
+		)
+	),
+	s(
+		{ trig = "jasonfunc", descr = "Jason Kuan's test function snippet." },
+		f(function()
+			return os.date("cur time: %D - %H:%M:%S")
+		end)
+	),
 })
 
 ls.add_snippets("plantuml", {
-  s(
-    { trig = "theme", dscr = "apply my nord theme" },
-    fmt(
-      [[            
+	s(
+		{ trig = "theme", dscr = "apply my nord theme" },
+		fmt(
+			[[            
 !theme nord-night from https://raw.githubusercontent.com/jason9075/plantuml-nord-themes/main/themes
 ]],
-      {}
-    )
-  ),
-  s(
-    { trig = "ar", dscr = "add arrow" },
-    fmta(
-      [[
+			{}
+		)
+	),
+	s(
+		{ trig = "ar", dscr = "add arrow" },
+		fmta(
+			[[
 <A> <artype> <B>
 ]],
-      {
-        A = i(1, "from"),
-        B = i(2, "to"),
-        artype = c(3, { t("->"), t("-->"), t("->x"), t("-->x"), t("<->"), t("<-->") }),
-      }
-    )
-  ),
+			{
+				A = i(1, "from"),
+				B = i(2, "to"),
+				artype = c(3, { t("->"), t("-->"), t("->x"), t("-->x"), t("<->"), t("<-->") }),
+			}
+		)
+	),
 })
