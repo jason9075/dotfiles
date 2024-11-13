@@ -48,6 +48,7 @@ keymap({ "i", "s" }, "kj", "<ESC>", opts)
 -- LuaSnip snippet navigation
 keymap({ "i", "s" }, "<C-k>", "<cmd>lua require('luasnip').expand_or_jump()<CR>", opts)
 keymap({ "i", "s" }, "<C-j>", "<cmd>lua require('luasnip').jump(-1)<CR>", opts)
+keymap({ "i", "s" }, "<C-l>", "<cmd>lua require('luasnip').change_choice(1)<CR>", opts)
 
 -- Visual Mode --
 
