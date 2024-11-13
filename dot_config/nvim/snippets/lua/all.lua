@@ -48,4 +48,17 @@ ls.add_snippets("plantuml", {
       {}
     )
   ),
+  s(
+    { trig = "ar", dscr = "add arrow" },
+    fmta(
+      [[
+<A> <artype> <B>
+]],
+      {
+        A = i(1, "from"),
+        B = i(2, "to"),
+        artype = c(3, { t("->"), t("-->"), t("->x"), t("-->x"), t("<->"), t("<-->") }),
+      }
+    )
+  ),
 })
