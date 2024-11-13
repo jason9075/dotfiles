@@ -1,7 +1,2 @@
-local luasnip = require("luasnip.loaders.from_vscode")
-
-luasnip.lazy_load()
-
--- Example
---[[ luasnip.lazy_load({paths="/path/to/package.json/folder"}) ]]
-luasnip.lazy_load({ paths = "~/.config/nvim/snippets" })
+require("luasnip.loaders.from_vscode").lazy_load({ paths = "~/.config/nvim/snippets/vs_code" })
+require("luasnip.loaders.from_lua").lazy_load({ paths = "~/.config/nvim/snippets/lua" })

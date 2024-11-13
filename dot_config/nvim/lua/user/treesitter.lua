@@ -40,7 +40,7 @@ configs.setup({
   },
   auto_install = true, -- Automatically install missing parsers when entering buffer
   sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
-  ignore_install = { "scala", "hjson", "cuda", "tsx", "query", "json5", "fish", "latex", "llvm", "swift" }, -- List of parsers to ignore installing
+  ignore_install = { "scala", "hjson", "tsx", "query", "json5", "fish", "latex", "llvm", "swift" }, -- List of parsers to ignore installing
   autopairs = {
     enable = true,
   },
