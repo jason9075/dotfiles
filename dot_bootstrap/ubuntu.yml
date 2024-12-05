@@ -19,7 +19,6 @@
       - tmux
       - grc
       - vim
-      - zoxide
       - jq
       - yq
       # - black
@@ -51,6 +50,12 @@
 
 - name: Install Zoxide
   shell: 'curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash'
+  become: no
+
+- name: Install Zoxide
+  shell: 'curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh'
+  args:
+    executable: /bin/bash
   become: no
 
 - name: Install eza
