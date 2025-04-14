@@ -72,8 +72,8 @@ local mappings = {
     { "<leader>gS", "<cmd>FzfLua git_stash<CR>", desc = "Stash" },
     { "<leader>gc", "<cmd>FzfLua git_commits<CR>", desc = "Checkout commit" },
     { "<leader>gb", "<cmd>FzfLua git_bcommits<CR>", desc = "Buffer commit" },
-    { "<leader>gd", "<cmd>Gitsigns diffthis HEAD<CR>", desc = "Diff HEAD" },
-    { "<leader>gf", "<cmd>DiffviewOpen<CR>", desc = "Diff File" },
+    { "<leader>gf", "<cmd>FzfLua git_files<CR>", desc = "Files" },
+    { "<leader>gd", "<cmd>DiffviewOpen<CR>", desc = "Diff File" },
     { "<leader>gh", "<cmd>DiffviewFileHistory<CR>", desc = "Diff File History" },
 
     { "<leader>h", group = "Harpoon" },
