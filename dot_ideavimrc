@@ -47,3 +47,9 @@ map <leader>dx <Action>(Stop)
 "" replace ideavim's emulated <C-o> and <C-i> with IDE's to have correct history
 map <C-o> <Action>(Back)
 map <C-i> <Action>(Forward)
+
+"" move 5 lines up/down with Shift+j/k
+nnoremap <S-j> 5j
+nnoremap <S-k> 5k
+vnoremap <S-j> 5j
+vnoremap <S-k> 5k
