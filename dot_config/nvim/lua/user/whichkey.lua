@@ -49,7 +49,12 @@ local mappings = {
     { "<leader>Q", "<cmd>qa!<CR>", desc = "Quit!" },
     { "<leader>x", "<cmd>Bdelete!<CR>", desc = "Close Buffer" },
     { "<leader>n", "<cmd>Noice dismiss<CR>", desc = "Close Noice Message" },
-    { "<leader>o", "<cmd>BufferLineCloseOther<CR>", desc = "Close Others" },
+    { "<leader>o", group = "Opencode" },
+    { "<leader>oa", function() require("opencode").ask("@this: ", { submit = true }) end, desc = "Ask opencode" },
+    { "<leader>ol", function() return require("opencode").operator("@this ") .. "_" end, desc = "Add line to opencode", expr = true },
+    { "<leader>os", function() require("opencode").select() end, desc = "Execute opencode action..." },
+    { "<leader>ot", function() require("opencode").toggle() end, desc = "Toggle opencode" },
+    { "<leader>or", function() return require("opencode").operator("@this ") end, desc = "Add range to opencode", expr = true },
 
     { "<leader>b", group = "Buffers" },
     { "<leader>bj", "<cmd>BufferLinePick<CR", desc = "Jump" },
@@ -144,6 +149,14 @@ local mappings = {
       desc = "Extract Variable",
     },
     { "<leader>ri", "<Esc><Cmd>lua require('refactoring').refactor('Inline Variable')<CR>", desc = "Inline Variable" },
+    { "<leader>o", group = "Opencode" },
+    { "<leader>oa", function() require("opencode").ask("@this: ", { submit = true }) end, desc = "Ask opencode" },
+    { "<leader>os", function() require("opencode").select() end, desc = "Execute opencode action..." },
+    { "<leader>or", function() return require("opencode").operator("@this ") end, desc = "Add range to opencode", expr = true },
+  },
+  {
+    mode = "t",
+    { "<leader>ot", function() require("opencode").toggle() end, desc = "Toggle opencode" },
   },
 }
 
