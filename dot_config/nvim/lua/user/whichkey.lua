@@ -50,11 +50,11 @@ local mappings = {
     { "<leader>x", "<cmd>Bdelete!<CR>", desc = "Close Buffer" },
     { "<leader>n", "<cmd>Noice dismiss<CR>", desc = "Close Noice Message" },
     { "<leader>o", group = "Opencode" },
-    { "<leader>oa", function() require("opencode").ask("@this: ", { submit = true }) end, desc = "Ask opencode" },
-    { "<leader>ol", function() return require("opencode").operator("@this ") .. "_" end, desc = "Add line to opencode", expr = true },
-    { "<leader>os", function() require("opencode").select() end, desc = "Execute opencode action..." },
-    { "<leader>ot", function() require("opencode").toggle() end, desc = "Toggle opencode" },
-    { "<leader>or", function() return require("opencode").operator("@this ") end, desc = "Add range to opencode", expr = true },
+    { "<leader>oa", function() require("opencode").ask("@this: ", { submit = true }) end, desc = "Ask" },
+    { "<leader>ol", function() return require("opencode").operator("@this ") .. "_" end, desc = "Add Line", expr = true },
+    { "<leader>os", function() require("opencode").select() end, desc = "Action" },
+    { "<leader>ot", function() require("opencode").toggle() end, desc = "Toggle" },
+    { "<leader>oo", function() return require("opencode").operator("@this ") end, desc = "Add Range", expr = true },
 
     { "<leader>b", group = "Buffers" },
     { "<leader>bj", "<cmd>BufferLinePick<CR", desc = "Jump" },
@@ -68,6 +68,7 @@ local mappings = {
     { "<leader>bL", "<cmd>BufferLineSortByExtension<CR>", desc = "Sort by language" },
 
     { "<leader>g", group = "Git" },
+    { "<leader>gl", "<cmd>LazyGit<CR>", desc = "LazyGit" },
     { "<leader>gj", "<cmd>lua require 'gitsigns'.next_hunk()<CR>", desc = "Next Hunk" },
     { "<leader>gk", "<cmd>lua require 'gitsigns'.prev_hunk()<CR>", desc = "Prev Hunk" },
     { "<leader>gp", "<cmd>lua require 'gitsigns'.preview_hunk()<CR>", desc = "Preview Hunk" },
@@ -150,13 +151,13 @@ local mappings = {
     },
     { "<leader>ri", "<Esc><Cmd>lua require('refactoring').refactor('Inline Variable')<CR>", desc = "Inline Variable" },
     { "<leader>o", group = "Opencode" },
-    { "<leader>oa", function() require("opencode").ask("@this: ", { submit = true }) end, desc = "Ask opencode" },
-    { "<leader>os", function() require("opencode").select() end, desc = "Execute opencode action..." },
-    { "<leader>or", function() return require("opencode").operator("@this ") end, desc = "Add range to opencode", expr = true },
+    { "<leader>oa", function() require("opencode").ask("@this: ", { submit = true }) end, desc = "Ask" },
+    { "<leader>os", function() require("opencode").select() end, desc = "Action" },
+    { "<leader>oo", function() return require("opencode").operator("@this ") end, desc = "Add Range", expr = true },
   },
   {
     mode = "t",
-    { "<leader>ot", function() require("opencode").toggle() end, desc = "Toggle opencode" },
+    { "<leader>ot", function() require("opencode").toggle() end, desc = "Toggle" },
   },
 }
 

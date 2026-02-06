@@ -155,44 +155,44 @@ local plugins = {
 
   -- LSP
   {
-    "zbirenbaum/copilot.lua",
-    event = "VeryLazy",
-    config = function()
-      require("copilot").setup({
-        panel = {
-          enabled = true,
-          auto_refresh = false,
-          keymap = {
-            jump_prev = "[[",
-            jump_next = "]]",
-            accept = "<C-g>",
-            refresh = "gr",
-            open = "<M-CR>",
-          },
-          layout = {
-            position = "bottom", -- | top | left | right
-            ratio = 0.4,
-          },
-        },
-        suggestion = {
-          enabled = true,
-          auto_trigger = true,
-          hide_during_completion = true,
-          debounce = 75,
-          keymap = {
-            accept = "<C-g>",
-            accept_word = false,
-            accept_line = false,
-            next = "<M-]>",
-            prev = "<M-[>",
-            dismiss = "<C-]>",
-          },
-        },
-        filetypes = {
-          ["."] = true,
-        },
-      })
-    end,
+    -- "zbirenbaum/copilot.lua",
+    -- event = "VeryLazy",
+    -- config = function()
+    --   require("copilot").setup({
+    --     panel = {
+    --       enabled = true,
+    --       auto_refresh = false,
+    --       keymap = {
+    --         jump_prev = "[[",
+    --         jump_next = "]]",
+    --         accept = "<C-g>",
+    --         refresh = "gr",
+    --         open = "<M-CR>",
+    --       },
+    --       layout = {
+    --         position = "bottom", -- | top | left | right
+    --         ratio = 0.4,
+    --       },
+    --     },
+    --     suggestion = {
+    --       enabled = true,
+    --       auto_trigger = true,
+    --       hide_during_completion = true,
+    --       debounce = 75,
+    --       keymap = {
+    --         accept = "<C-g>",
+    --         accept_word = false,
+    --         accept_line = false,
+    --         next = "<M-]>",
+    --         prev = "<M-[>",
+    --         dismiss = "<C-]>",
+    --       },
+    --     },
+    --     filetypes = {
+    --       ["."] = true,
+    --     },
+    --   })
+    -- end,
   },
   {
     "VonHeikemen/lsp-zero.nvim",
@@ -257,6 +257,17 @@ local plugins = {
   -- { "tpope/vim-fugitive", cmd = { "G", "Git" } },
   { "sindrets/diffview.nvim", lazy = false },
   "lewis6991/gitsigns.nvim", -- use to display line change on the left of line numbers
+  {
+    "kdheepak/lazygit.nvim",
+    lazy = true,
+    cmd = {
+      "LazyGit",
+      "LazyGitConfig",
+      "LazyGitCurrentFile",
+      "LazyGitFilter",
+      "LazyGitFilterCurrentFile",
+    },
+  },
 
   -- Debug Adapter Protocol
   {
