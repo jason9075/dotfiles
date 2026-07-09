@@ -57,7 +57,7 @@ local mappings = {
     { "<leader>oo", function() return require("opencode").operator("@this ") end, desc = "Add Range", expr = true },
 
     { "<leader>b", group = "Buffers" },
-    { "<leader>bj", "<cmd>BufferLinePick<CR", desc = "Jump" },
+    { "<leader>bj", "<cmd>BufferLinePick<CR>", desc = "Jump" },
     { "<leader>bf", "<cmd>FzfLua buffers<CR>", desc = "Find" },
     { "<leader>bp", "<cmd>BufferLineCyclePrev<CR>", desc = "Previous" },
     { "<leader>bn", "<cmd>BufferLineCycleNext<CR>", desc = "Next" },
@@ -74,7 +74,7 @@ local mappings = {
     { "<leader>gp", "<cmd>lua require 'gitsigns'.preview_hunk()<CR>", desc = "Preview Hunk" },
     { "<leader>gr", "<cmd>lua require 'gitsigns'.reset_hunk()<CR>", desc = "Reset Hunk" },
     { "<leader>gR", "<cmd>lua require 'gitsigns'.reset_buffer()<CR>", desc = "Reset Buffer" },
-    { "<leader>gs", "<cmd>FzfLua git_status<CR>", desc = "Statue" },
+    { "<leader>gs", "<cmd>FzfLua git_status<CR>", desc = "Status" },
     { "<leader>gS", "<cmd>FzfLua git_stash<CR>", desc = "Stash" },
     { "<leader>gc", "<cmd>FzfLua git_commits<CR>", desc = "Checkout commit" },
     { "<leader>gb", "<cmd>FzfLua git_bcommits<CR>", desc = "Buffer commit" },
@@ -83,21 +83,21 @@ local mappings = {
     { "<leader>gh", "<cmd>DiffviewFileHistory<CR>", desc = "Diff File History" },
 
     { "<leader>h", group = "Harpoon" },
-    { "<leader>ha", "<cmd>lua require('harpoon.mark').add_file<CR>", desc = "Add" },
-    { "<leader>hr", "<cmd>lua require('harpoon.mark').rm_file<CR>", desc = "Remove" },
-    { "<leader>hR", "<cmd>lua require('harpoon.mark').clear_all<CR>", desc = "Remove All" },
-    { "<leader>hm", "<cmd>lua require('harpoon.ui').toggle_quick_menu<CR>", desc = "Menu" },
-    { "<leader>hj", "<cmd>lua require('harpoon.ui').nav_next<CR>", desc = "Next Mark" },
-    { "<leader>hk", "<cmd>lua require('harpoon.ui').nav_prev<CR>", desc = "Previous Mark" },
+    { "<leader>ha", "<cmd>lua require('harpoon.mark').add_file()<CR>", desc = "Add" },
+    { "<leader>hr", "<cmd>lua require('harpoon.mark').rm_file()<CR>", desc = "Remove" },
+    { "<leader>hR", "<cmd>lua require('harpoon.mark').clear_all()<CR>", desc = "Remove All" },
+    { "<leader>hm", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>", desc = "Menu" },
+    { "<leader>hj", "<cmd>lua require('harpoon.ui').nav_next()<CR>", desc = "Next Mark" },
+    { "<leader>hk", "<cmd>lua require('harpoon.ui').nav_prev()<CR>", desc = "Previous Mark" },
 
     { "<leader>l", group = "LSP" },
     { "<leader>la", "<cmd>FzfLua lsp_code_actions<CR>", desc = "Code Action" },
     { "<leader>li", "<cmd>LspInfo<CR>", desc = "Info" },
     { "<leader>lI", "<cmd>Mason<CR>", desc = "Installer Info" },
-    { "<leader>lj", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", desc = "Next Diagnostic" },
-    { "<leader>lk", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", desc = "Prev Diagnostic" },
+    { "<leader>lj", "<cmd>lua vim.diagnostic.goto_next()<CR>", desc = "Next Diagnostic" },
+    { "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev()<CR>", desc = "Prev Diagnostic" },
     { "<leader>ll", "<cmd>lua vim.lsp.codelens.run()<CR>", desc = "CodeLens Action" },
-    { "<leader>lq", "<cmd>FzfLua qucikfix<CR>", desc = "Quickfix" },
+    { "<leader>lq", "<cmd>FzfLua quickfix<CR>", desc = "Quickfix" },
 
     { "<leader>r", group = "Refactor" },
     { "<leader>rf", "<cmd>LspZeroFormat<CR>", desc = "Format" },
@@ -109,7 +109,7 @@ local mappings = {
     { "<leader>fd", "<cmd>lua vim.lsp.buf.definition()<CR>", desc = "Definition" },
     { "<leader>fe", "<cmd>lua vim.diagnostic.goto_next()<CR>", desc = "Error" },
     { "<leader>fr", "<cmd>FzfLua lsp_references<CR>", desc = "References" },
-    { "<leader>fi", "<cmd>FzfLua lsp_implementations<CR>", desc = "Implentations" },
+    { "<leader>fi", "<cmd>FzfLua lsp_implementations<CR>", desc = "Implementations" },
     { "<leader>ff", "<cmd>FzfLua files<CR>", desc = "Files" },
     { "<leader>fn", "<cmd>Noice fzf<CR>", desc = "Notify" },
     { "<leader>fg", "<cmd>FzfLua live_grep<CR>", desc = "Live Grep" },
@@ -162,4 +162,31 @@ local mappings = {
 }
 
 wk.setup(setup)
-wk.add(mappings)
+
+local function register_legacy(specs)
+  for _, spec in ipairs(specs) do
+    local mode = spec.mode or "n"
+
+    for _, mapping in ipairs(spec) do
+      local lhs = mapping[1]
+      local rhs = mapping[2]
+
+      if lhs and mapping.group then
+        pcall(wk.register, { [lhs] = { name = mapping.group } }, { mode = mode })
+      elseif lhs and rhs then
+        vim.keymap.set(mode, lhs, rhs, {
+          desc = mapping.desc,
+          expr = mapping.expr or false,
+          silent = true,
+        })
+        pcall(wk.register, { [lhs] = mapping.desc or "" }, { mode = mode })
+      end
+    end
+  end
+end
+
+if wk.add then
+  wk.add(mappings)
+else
+  register_legacy(mappings)
+end
